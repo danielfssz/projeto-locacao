@@ -13,5 +13,6 @@ namespace ProjetoLocacao.Controller
         public string Patrimonio { get; set; }
 
         public bool Avariado { get; set; }
+        
     }
 }
