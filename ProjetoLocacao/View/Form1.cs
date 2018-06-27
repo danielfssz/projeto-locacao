@@ -70,17 +70,23 @@ namespace ProjetoLocacao
         private void btnCadastrarTipo_Click(object sender, EventArgs e)
         {
             string nome = tbNomeTipo.Text;
-
+            
             double valor;
 
             //se o valor da textbox de valor for numérico, converte e pega
             //se não, retorna um erro
-            if(double.TryParse(tbValorTipo.Text, out valor)) { }
-            else
+            if (nome.Trim() == "")
             {
-                MessageBox.Show("Digite um valor numérico!");
+                MessageBox.Show("O nome não pode ser vazio");
+                return;
             }
 
+            if (!double.TryParse(tbValorTipo.Text, out valor))
+            {
+                MessageBox.Show("Digite um valor numérico!");
+                return;
+            }
+            
             //adiciona um novo tipo de equipamento no estoque
             Estoque.Add(new TipoEquipamento(nome, valor));
 
@@ -99,14 +105,14 @@ namespace ProjetoLocacao
             cmbCadEquip.Items.Clear();
             foreach (TipoEquipamento te in Estoque)
             {
-                cmbCadEquip.Items.Add(te.Nome);
+                cmbCadEquip.Items.Add(te.TipoEquipId + " | " + te.Nome);
             }
 
             //lista os itens na consulta de tipos
             lstConsultaTipo.Items.Clear();
             foreach (TipoEquipamento te in Estoque)
             {
-                lstConsultaTipo.Items.Add(te.Nome);
+                lstConsultaTipo.Items.Add(te.TipoEquipId + " | " + te.Nome);
             }
         }
 
