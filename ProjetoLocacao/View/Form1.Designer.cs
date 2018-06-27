@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nmItemQtd = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -67,8 +67,9 @@
             this.lstConsultaContratos = new System.Windows.Forms.ListBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmItemQtd)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -83,7 +84,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.nmItemQtd);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
@@ -100,12 +101,12 @@
             this.groupBox1.Text = "Cadastro de Itens de Contrato";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // numericUpDown1
+            // nmItemQtd
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(157, 45);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 19;
+            this.nmItemQtd.Location = new System.Drawing.Point(157, 45);
+            this.nmItemQtd.Name = "nmItemQtd";
+            this.nmItemQtd.Size = new System.Drawing.Size(120, 20);
+            this.nmItemQtd.TabIndex = 19;
             // 
             // label9
             // 
@@ -178,10 +179,11 @@
             this.btnItemRemove.TabIndex = 13;
             this.btnItemRemove.Text = "Remover";
             this.btnItemRemove.UseVisualStyleBackColor = true;
+            this.btnItemRemove.Click += new System.EventHandler(this.btnItemRemove_Click);
             // 
             // btnContAdd
             // 
-            this.btnContAdd.Location = new System.Drawing.Point(117, 140);
+            this.btnContAdd.Location = new System.Drawing.Point(116, 207);
             this.btnContAdd.Name = "btnContAdd";
             this.btnContAdd.Size = new System.Drawing.Size(108, 38);
             this.btnContAdd.TabIndex = 13;
@@ -215,6 +217,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.btnContAdd);
             this.groupBox2.Controls.Add(this.dtpSaida);
             this.groupBox2.Location = new System.Drawing.Point(302, 6);
@@ -226,7 +229,7 @@
             // 
             // dtpSaida
             // 
-            this.dtpSaida.Location = new System.Drawing.Point(69, 66);
+            this.dtpSaida.Location = new System.Drawing.Point(24, 168);
             this.dtpSaida.Name = "dtpSaida";
             this.dtpSaida.Size = new System.Drawing.Size(200, 20);
             this.dtpSaida.TabIndex = 0;
@@ -469,6 +472,15 @@
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(21, 147);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Data de devolução:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -478,10 +490,11 @@
             this.Name = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmItemQtd)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -533,9 +546,10 @@
         private System.Windows.Forms.ListBox lstConsultaContratos;
         private System.Windows.Forms.ListBox lstItensContrato;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nmItemQtd;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -34,6 +34,7 @@ namespace ProjetoLocacao
         // botão para adicionar itens de contrato
         private void btnItemAdd_Click(object sender, EventArgs e)
         {
+
             TipoEquipamento tipoItemContrato = null;
 
             //percorre todos os tipos de equipamentos do estoque
@@ -41,7 +42,7 @@ namespace ProjetoLocacao
             {
                 //quando o item selecionado no combobox for igual
                 //a algum da lista de estoque ele adiciona o valor da variável
-                if (cmbTipoItem.Text == Estoque[i].Nome)
+                if (cmbTipoItem.Text == Estoque[i].TipoEquipId + " | " + Estoque[i].Nome)
                 {
                     tipoItemContrato = Estoque[i];
                 }
@@ -49,20 +50,20 @@ namespace ProjetoLocacao
 
             //se tiver equipamentos suficientes no estoque
             //adiciona um item novo na lista de contratos
-            //if (tipoItemContrato.equipos.Count >= int.Parse(nmItemQtd.Text))
-            //{
-            //    itensContrato.Add(new ItemContrato(tipoItemContrato, int.Parse(nmItemQtd.Text)));
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Não há equipamentos suficientes no estoque!");
-            //}
+            if (tipoItemContrato.equipos.Count >= int.Parse(nmItemQtd.Text))
+            {
+                itensContrato.Add(new ItemContrato(tipoItemContrato, int.Parse(nmItemQtd.Text)));
+            }
+            else
+            {
+                MessageBox.Show("Não há equipamentos suficientes no estoque!");
+            }
 
             //mostra os itens na lista
             lstItens.Items.Clear();
-            foreach(ItemContrato ic in itensContrato)
+            foreach (ItemContrato ic in itensContrato)
             {
-                lstItens.Items.Add("Tipo: " + ic.TipoEquipamento.Nome + " | Quantidade: " + ic.Qtde);
+                lstItens.Items.Add("ID: " + ic.TipoEquipamento.TipoEquipId + " | Tipo: " + ic.TipoEquipamento.Nome + " | Quantidade: " + ic.Qtde);
             }
         }
 
@@ -70,7 +71,7 @@ namespace ProjetoLocacao
         private void btnCadastrarTipo_Click(object sender, EventArgs e)
         {
             string nome = tbNomeTipo.Text;
-            
+
             double valor;
 
             //se o valor da textbox de valor for numérico, converte e pega
@@ -86,7 +87,7 @@ namespace ProjetoLocacao
                 MessageBox.Show("Digite um valor numérico!");
                 return;
             }
-            
+
             //adiciona um novo tipo de equipamento no estoque
             Estoque.Add(new TipoEquipamento(nome, valor));
 
@@ -98,7 +99,7 @@ namespace ProjetoLocacao
             cmbTipoItem.Items.Clear();
             foreach (TipoEquipamento te in Estoque)
             {
-                cmbTipoItem.Items.Add(te.TipoEquipId + " | "+ te.Nome);
+                cmbTipoItem.Items.Add(te.TipoEquipId + " | " + te.Nome);
             }
 
             //lista os tipos no cadastro de equipamentos
@@ -123,7 +124,7 @@ namespace ProjetoLocacao
             {
                 //quando o item selecionado no combobox for igual
                 //a algum da lista de estoque ele adiciona o valor da variável
-                if (cmbCadEquip.Text == Estoque[i].Nome)
+                if (cmbCadEquip.Text == Estoque[i].TipoEquipId + " | " + Estoque[i].Nome)
                 {
                     idEquip = Estoque[i].equipos.Count + 1;
                     Estoque[i].equipos.Enqueue(new Equipamento(idEquip, Estoque[i]));
@@ -137,7 +138,7 @@ namespace ProjetoLocacao
             {
                 //quando o item selecionado no combobox for igual
                 //a algum da lista de estoque ele adiciona o valor da variável
-                if (cmbCadEquip.Text == Estoque[i].Nome)
+                if (cmbCadEquip.Text == Estoque[i].TipoEquipId + " | " + Estoque[i].Nome)
                 {
                     contagem = Estoque[i];
                 }
@@ -155,7 +156,8 @@ namespace ProjetoLocacao
             {
                 //quando o item selecionado no combobox for igual
                 //a algum da lista de estoque ele adiciona o valor da variável
-                if (cmbCadEquip.Text == Estoque[i].Nome)
+
+                if (cmbCadEquip.Text == Estoque[i].TipoEquipId + " | " + Estoque[i].Nome)
                 {
                     contagem = Estoque[i];
                 }
@@ -166,7 +168,7 @@ namespace ProjetoLocacao
 
         //botão pra gerar contrato
         private void btnContAdd_Click(object sender, EventArgs e)
-        {   
+        {
             //entra se tiver algum item de contrato
             if (itensContrato.Count > 0)
             {
@@ -198,14 +200,14 @@ namespace ProjetoLocacao
             char charPesq;
             int idConsultado = 0;
             string strIdConsultado = "";
-            
+
             for (int i = 0; i < var.Length; i++)
             {
                 if (var[i].ToString().Trim() == "|")
                 {
-                    idConsultado =int.Parse(var.Substring(4, i - 4).ToString());                    
+                    idConsultado = int.Parse(var.Substring(4, i - 4).ToString());
                     break;
-                }                
+                }
             }
 
 
@@ -217,7 +219,7 @@ namespace ProjetoLocacao
                 //lstItensContrato.Items.Add(eqp.TipoEquipamento.);
             }
 
-            
+
 
 
 
@@ -243,6 +245,31 @@ namespace ProjetoLocacao
         {
 
         }
+
+        private void btnItemRemove_Click(object sender, EventArgs e)
+        {
+            string var = lstItens.SelectedItem.ToString();
+            char charPesq;
+            int idConsultado = 0;
+            string strIdConsultado = "";
+
+            for (int i = 0; i < var.Length; i++)
+            {
+                if (var[i].ToString().Trim() == "|")
+                {
+                    idConsultado = int.Parse(var.Substring(4, i - 4).ToString());
+                    itensContrato.RemoveAt(idConsultado);
+                    Estoque.Add(Estoque[idConsultado]);
+
+                    lstItens.Items.Clear();
+                    foreach (ItemContrato ic in itensContrato)
+                    {
+                        lstItens.Items.Add("ID: " + ic.TipoEquipamento.TipoEquipId + " | Tipo: " + ic.TipoEquipamento.Nome + " | Quantidade: " + ic.Qtde);
+                    }
+                        break;
+                    }
+                }
+            }
 
         private void lstConsultaTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
