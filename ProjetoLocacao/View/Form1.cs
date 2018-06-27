@@ -21,6 +21,7 @@ namespace ProjetoLocacao
         List<Contrato> ContratosLiberados = new List<Contrato>();
 
         List<ItemContrato> itensContrato = new List<ItemContrato>();
+
         int idEquip = 0, idContrato = 0;
 
         public Form1()
@@ -89,7 +90,7 @@ namespace ProjetoLocacao
             cmbTipoItem.Items.Clear();
             foreach (TipoEquipamento te in Estoque)
             {
-                cmbTipoItem.Items.Add(te.Nome);
+                cmbTipoItem.Items.Add(te.TipoEquipId + " | "+ te.Nome);
             }
 
             //lista os tipos no cadastro de equipamentos
@@ -184,6 +185,33 @@ namespace ProjetoLocacao
         private void lstConsultaContratos_SelectedIndexChanged(object sender, EventArgs e)
         {
             Contrato contagem = null;
+
+            string var = lstConsultaContratos.SelectedItem.ToString();
+            char charPesq;
+            int idConsultado = 0;
+            string strIdConsultado = "";
+            
+            for (int i = 0; i < var.Length; i++)
+            {
+                if (var[i].ToString().Trim() == "|")
+                {
+                    idConsultado =int.Parse(var.Substring(4, i - 4).ToString());                    
+                    break;
+                }                
+            }
+
+
+            lstItensContrato.Items.Clear();
+
+            foreach (ItemContrato eqp in Contratos[idConsultado].itensContrato)
+            {
+                lstItensContrato.Items.Add(eqp.TipoEquipamento.Nome);
+                //lstItensContrato.Items.Add(eqp.TipoEquipamento.);
+            }
+
+            
+
+
 
             //percorre todos os tipos de equipamentos do estoque
             for (int i = 0; i < Contratos.Count; i++)

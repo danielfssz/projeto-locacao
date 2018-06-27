@@ -33,7 +33,6 @@
             this.cmbTipoItem = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnItemAdd = new System.Windows.Forms.Button();
-            this.nmItemQtd = new System.Windows.Forms.DomainUpDown();
             this.btnItemRemove = new System.Windows.Forms.Button();
             this.btnContAdd = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -60,10 +59,11 @@
             this.lstConsultaEquip = new System.Windows.Forms.ListBox();
             this.lstConsultaTipo = new System.Windows.Forms.ListBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.lstItensContrato = new System.Windows.Forms.ListBox();
+            this.lstConsultaContratos = new System.Windows.Forms.ListBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.lstConsultaContratos = new System.Windows.Forms.ListBox();
-            this.lstItensContrato = new System.Windows.Forms.ListBox();
+            this.nmItemQtd = new System.Windows.Forms.DomainUpDown();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -79,18 +79,18 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.nmItemQtd);
             this.groupBox1.Controls.Add(this.lstItens);
             this.groupBox1.Controls.Add(this.cmbTipoItem);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnItemAdd);
-            this.groupBox1.Controls.Add(this.nmItemQtd);
             this.groupBox1.Controls.Add(this.btnItemRemove);
             this.groupBox1.Location = new System.Drawing.Point(3, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(283, 264);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cadastro de item";
+            this.groupBox1.Text = "Cadastro de Itens de Contrato";
             // 
             // lstItens
             // 
@@ -103,7 +103,7 @@
             // cmbTipoItem
             // 
             this.cmbTipoItem.FormattingEnabled = true;
-            this.cmbTipoItem.Location = new System.Drawing.Point(6, 19);
+            this.cmbTipoItem.Location = new System.Drawing.Point(6, 33);
             this.cmbTipoItem.Name = "cmbTipoItem";
             this.cmbTipoItem.Size = new System.Drawing.Size(121, 21);
             this.cmbTipoItem.TabIndex = 10;
@@ -126,14 +126,6 @@
             this.btnItemAdd.Text = "Adicionar item";
             this.btnItemAdd.UseVisualStyleBackColor = true;
             this.btnItemAdd.Click += new System.EventHandler(this.btnItemAdd_Click);
-            // 
-            // nmItemQtd
-            // 
-            this.nmItemQtd.Location = new System.Drawing.Point(157, 20);
-            this.nmItemQtd.Name = "nmItemQtd";
-            this.nmItemQtd.Size = new System.Drawing.Size(120, 20);
-            this.nmItemQtd.TabIndex = 9;
-            this.nmItemQtd.Text = "domainUpDown1";
             // 
             // btnItemRemove
             // 
@@ -398,6 +390,23 @@
             this.tabPage6.Text = "Contratos de locação";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // lstItensContrato
+            // 
+            this.lstItensContrato.FormattingEnabled = true;
+            this.lstItensContrato.Location = new System.Drawing.Point(386, 30);
+            this.lstItensContrato.Name = "lstItensContrato";
+            this.lstItensContrato.Size = new System.Drawing.Size(228, 186);
+            this.lstItensContrato.TabIndex = 11;
+            // 
+            // lstConsultaContratos
+            // 
+            this.lstConsultaContratos.FormattingEnabled = true;
+            this.lstConsultaContratos.Location = new System.Drawing.Point(21, 30);
+            this.lstConsultaContratos.Name = "lstConsultaContratos";
+            this.lstConsultaContratos.Size = new System.Drawing.Size(345, 186);
+            this.lstConsultaContratos.TabIndex = 10;
+            this.lstConsultaContratos.SelectedIndexChanged += new System.EventHandler(this.lstConsultaContratos_SelectedIndexChanged);
+            // 
             // tabPage7
             // 
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
@@ -417,22 +426,13 @@
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // lstConsultaContratos
+            // nmItemQtd
             // 
-            this.lstConsultaContratos.FormattingEnabled = true;
-            this.lstConsultaContratos.Location = new System.Drawing.Point(21, 30);
-            this.lstConsultaContratos.Name = "lstConsultaContratos";
-            this.lstConsultaContratos.Size = new System.Drawing.Size(345, 186);
-            this.lstConsultaContratos.TabIndex = 10;
-            this.lstConsultaContratos.SelectedIndexChanged += new System.EventHandler(this.lstConsultaContratos_SelectedIndexChanged);
-            // 
-            // lstItensContrato
-            // 
-            this.lstItensContrato.FormattingEnabled = true;
-            this.lstItensContrato.Location = new System.Drawing.Point(386, 30);
-            this.lstItensContrato.Name = "lstItensContrato";
-            this.lstItensContrato.Size = new System.Drawing.Size(228, 186);
-            this.lstItensContrato.TabIndex = 11;
+            this.nmItemQtd.Location = new System.Drawing.Point(157, 32);
+            this.nmItemQtd.Name = "nmItemQtd";
+            this.nmItemQtd.Size = new System.Drawing.Size(120, 20);
+            this.nmItemQtd.TabIndex = 15;
+            this.nmItemQtd.Text = "domainUpDown1";
             // 
             // Form1
             // 
@@ -466,7 +466,6 @@
         private System.Windows.Forms.ComboBox cmbTipoItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnItemAdd;
-        private System.Windows.Forms.DomainUpDown nmItemQtd;
         private System.Windows.Forms.Button btnItemRemove;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
@@ -497,6 +496,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListBox lstConsultaContratos;
         private System.Windows.Forms.ListBox lstItensContrato;
+        private System.Windows.Forms.DomainUpDown nmItemQtd;
     }
 }
 

@@ -12,7 +12,7 @@ namespace ProjetoLocacao.Entities
             public int ContratoId { get; set; }
             public DateTime DtSaida { get; set; }
             public DateTime DtRetorno { get; set; }
-            List<ItemContrato> itensContrato = new List<ItemContrato>();
+            public List<ItemContrato> itensContrato = new List<ItemContrato>();
         #endregion
 
         #region métodos
