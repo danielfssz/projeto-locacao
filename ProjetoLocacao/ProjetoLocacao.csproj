@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\TipoEquipamento.cs" />
-    <Compile Include="Model\Equipamento.cs" />
+    <Compile Include="Entities\Contrato.cs" />
+    <Compile Include="Entities\Equipamento.cs" />
+    <Compile Include="Entities\ItemContrato.cs" />
     <Compile Include="View\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

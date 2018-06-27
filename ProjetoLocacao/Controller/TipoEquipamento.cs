@@ -14,7 +14,8 @@ namespace ProjetoLocacao.Controller
 
         public double Valor { get; set; }
 
-        Queue<Equipamento> equipos = new Queue<Equipamento>();
+        public Queue<Equipamento> equipos = new Queue<Equipamento>();
+        
         
     }
 }
