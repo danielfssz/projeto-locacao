@@ -29,9 +29,13 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.lstItens = new System.Windows.Forms.ListBox();
             this.cmbTipoItem = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblItemRemove = new System.Windows.Forms.Label();
             this.btnItemAdd = new System.Windows.Forms.Button();
             this.btnItemRemove = new System.Windows.Forms.Button();
             this.btnContAdd = new System.Windows.Forms.Button();
@@ -63,8 +67,8 @@
             this.lstConsultaContratos = new System.Windows.Forms.ListBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.nmItemQtd = new System.Windows.Forms.DomainUpDown();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -79,49 +83,88 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.nmItemQtd);
+            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.lstItens);
             this.groupBox1.Controls.Add(this.cmbTipoItem);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lblItemRemove);
             this.groupBox1.Controls.Add(this.btnItemAdd);
             this.groupBox1.Controls.Add(this.btnItemRemove);
             this.groupBox1.Location = new System.Drawing.Point(3, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(283, 264);
+            this.groupBox1.Size = new System.Drawing.Size(302, 264);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastro de Itens de Contrato";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(157, 45);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.TabIndex = 19;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(154, 29);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(87, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Selecione a qtde";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 29);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(127, 13);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Selecione o equipamento";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 123);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(87, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Itens do contrato";
             // 
             // lstItens
             // 
             this.lstItens.FormattingEnabled = true;
-            this.lstItens.Location = new System.Drawing.Point(6, 66);
+            this.lstItens.Location = new System.Drawing.Point(3, 137);
             this.lstItens.Name = "lstItens";
             this.lstItens.Size = new System.Drawing.Size(181, 121);
             this.lstItens.TabIndex = 11;
+            this.lstItens.SelectedIndexChanged += new System.EventHandler(this.lstItens_SelectedIndexChanged);
             // 
             // cmbTipoItem
             // 
             this.cmbTipoItem.FormattingEnabled = true;
-            this.cmbTipoItem.Location = new System.Drawing.Point(6, 33);
+            this.cmbTipoItem.Location = new System.Drawing.Point(6, 45);
             this.cmbTipoItem.Name = "cmbTipoItem";
             this.cmbTipoItem.Size = new System.Drawing.Size(121, 21);
             this.cmbTipoItem.TabIndex = 10;
             // 
-            // label1
+            // lblItemRemove
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(225, 140);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "label1";
+            this.lblItemRemove.AutoSize = true;
+            this.lblItemRemove.Location = new System.Drawing.Point(190, 169);
+            this.lblItemRemove.Name = "lblItemRemove";
+            this.lblItemRemove.Size = new System.Drawing.Size(101, 13);
+            this.lblItemRemove.TabIndex = 14;
+            this.lblItemRemove.Text = "Clique para remover";
             // 
             // btnItemAdd
             // 
-            this.btnItemAdd.Location = new System.Drawing.Point(79, 220);
+            this.btnItemAdd.Location = new System.Drawing.Point(6, 72);
             this.btnItemAdd.Name = "btnItemAdd";
-            this.btnItemAdd.Size = new System.Drawing.Size(108, 38);
+            this.btnItemAdd.Size = new System.Drawing.Size(86, 26);
             this.btnItemAdd.TabIndex = 12;
             this.btnItemAdd.Text = "Adicionar item";
             this.btnItemAdd.UseVisualStyleBackColor = true;
@@ -129,11 +172,11 @@
             // 
             // btnItemRemove
             // 
-            this.btnItemRemove.Location = new System.Drawing.Point(202, 103);
+            this.btnItemRemove.Location = new System.Drawing.Point(202, 185);
             this.btnItemRemove.Name = "btnItemRemove";
             this.btnItemRemove.Size = new System.Drawing.Size(75, 23);
             this.btnItemRemove.TabIndex = 13;
-            this.btnItemRemove.Text = "remove";
+            this.btnItemRemove.Text = "Remover";
             this.btnItemRemove.UseVisualStyleBackColor = true;
             // 
             // btnContAdd
@@ -426,14 +469,6 @@
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // nmItemQtd
-            // 
-            this.nmItemQtd.Location = new System.Drawing.Point(157, 32);
-            this.nmItemQtd.Name = "nmItemQtd";
-            this.nmItemQtd.Size = new System.Drawing.Size(120, 20);
-            this.nmItemQtd.TabIndex = 15;
-            this.nmItemQtd.Text = "domainUpDown1";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -443,6 +478,7 @@
             this.Name = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -464,7 +500,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox lstItens;
         private System.Windows.Forms.ComboBox cmbTipoItem;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblItemRemove;
         private System.Windows.Forms.Button btnItemAdd;
         private System.Windows.Forms.Button btnItemRemove;
         private System.Windows.Forms.TabControl tabControl1;
@@ -496,7 +532,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListBox lstConsultaContratos;
         private System.Windows.Forms.ListBox lstItensContrato;
-        private System.Windows.Forms.DomainUpDown nmItemQtd;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
     }
 }
 

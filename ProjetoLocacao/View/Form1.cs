@@ -27,6 +27,8 @@ namespace ProjetoLocacao
         public Form1()
         {
             InitializeComponent();
+            lblItemRemove.Hide();
+            btnItemRemove.Hide();
         }
 
         // botão para adicionar itens de contrato
@@ -47,14 +49,14 @@ namespace ProjetoLocacao
 
             //se tiver equipamentos suficientes no estoque
             //adiciona um item novo na lista de contratos
-            if (tipoItemContrato.equipos.Count >= int.Parse(nmItemQtd.Text))
-            {
-                itensContrato.Add(new ItemContrato(tipoItemContrato, int.Parse(nmItemQtd.Text)));
-            }
-            else
-            {
-                MessageBox.Show("Não há equipamentos suficientes no estoque!");
-            }
+            //if (tipoItemContrato.equipos.Count >= int.Parse(nmItemQtd.Text))
+            //{
+            //    itensContrato.Add(new ItemContrato(tipoItemContrato, int.Parse(nmItemQtd.Text)));
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Não há equipamentos suficientes no estoque!");
+            //}
 
             //mostra os itens na lista
             lstItens.Items.Clear();
@@ -223,6 +225,17 @@ namespace ProjetoLocacao
                 //    contagem = Contratos[i];
                 //}
             }
+        }
+
+        private void lstItens_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnItemRemove.Show();
+            lblItemRemove.Show();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
 
         private void lstConsultaTipo_SelectedIndexChanged(object sender, EventArgs e)
