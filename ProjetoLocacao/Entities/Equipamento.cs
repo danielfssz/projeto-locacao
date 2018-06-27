@@ -8,11 +8,42 @@ namespace ProjetoLocacao.Controller
 {
     class Equipamento
     {
-        public int EquipId { get; set; }
+        #region atributos
 
-        public string Patrimonio { get; set; }
+            public int EquipId { get; set; }
+            public string Patrimonio { get; set; }
+            public bool Avariado { get; set; }
+            private int countPatrimonio = 1;
 
-        public bool Avariado { get; set; }
-        
+        #endregion
+
+        #region construtores
+
+            public Equipamento(TipoEquipamento tipo)
+            {
+                EquipId = cadastrarID();
+                Patrimonio = gerarPatrimonio(tipo);
+                Avariado = false;
+            }
+
+        #endregion
+
+        #region métodos
+
+            public string gerarPatrimonio(TipoEquipamento tipo)
+            {
+                int aux = countPatrimonio;
+                countPatrimonio++;
+                return tipo.Nome + aux;
+            }
+
+            public int cadastrarID()
+            {
+                int aux = EquipId;
+                EquipId++;
+                return aux;
+            }
+
+        #endregion
     }
 }

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnContAdd = new System.Windows.Forms.Button();
             this.lstItens = new System.Windows.Forms.ListBox();
             this.cmbTipoItem = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,39 +40,49 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnCadastrarEquip = new System.Windows.Forms.Button();
+            this.cmbCadEquip = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnCadastrarTipo = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbValorTipo = new System.Windows.Forms.TextBox();
+            this.tbNomeTipo = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(107, 231);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Criar contrato";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnContAdd);
             this.groupBox1.Controls.Add(this.lstItens);
             this.groupBox1.Controls.Add(this.cmbTipoItem);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnItemAdd);
             this.groupBox1.Controls.Add(this.nmItemQtd);
             this.groupBox1.Controls.Add(this.btnItemRemove);
-            this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(3, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(283, 264);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastro de item";
+            // 
+            // btnContAdd
+            // 
+            this.btnContAdd.Location = new System.Drawing.Point(136, 216);
+            this.btnContAdd.Name = "btnContAdd";
+            this.btnContAdd.Size = new System.Drawing.Size(108, 38);
+            this.btnContAdd.TabIndex = 13;
+            this.btnContAdd.Text = "Criar contrato";
+            this.btnContAdd.UseVisualStyleBackColor = true;
             // 
             // lstItens
             // 
@@ -101,12 +111,13 @@
             // 
             // btnItemAdd
             // 
-            this.btnItemAdd.Location = new System.Drawing.Point(91, 208);
+            this.btnItemAdd.Location = new System.Drawing.Point(6, 216);
             this.btnItemAdd.Name = "btnItemAdd";
             this.btnItemAdd.Size = new System.Drawing.Size(108, 38);
             this.btnItemAdd.TabIndex = 12;
-            this.btnItemAdd.Text = "button2";
+            this.btnItemAdd.Text = "Adicionar item";
             this.btnItemAdd.UseVisualStyleBackColor = true;
+            this.btnItemAdd.Click += new System.EventHandler(this.btnItemAdd_Click);
             // 
             // nmItemQtd
             // 
@@ -151,7 +162,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Location = new System.Drawing.Point(302, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(312, 264);
@@ -161,6 +171,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -168,6 +180,91 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Cadastro de Equipamentos";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btnCadastrarEquip);
+            this.groupBox4.Controls.Add(this.cmbCadEquip);
+            this.groupBox4.Location = new System.Drawing.Point(323, 6);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(303, 264);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Cadastrar equipamento";
+            // 
+            // btnCadastrarEquip
+            // 
+            this.btnCadastrarEquip.Location = new System.Drawing.Point(105, 195);
+            this.btnCadastrarEquip.Name = "btnCadastrarEquip";
+            this.btnCadastrarEquip.Size = new System.Drawing.Size(121, 38);
+            this.btnCadastrarEquip.TabIndex = 5;
+            this.btnCadastrarEquip.Text = "Cadastrar";
+            this.btnCadastrarEquip.UseVisualStyleBackColor = true;
+            this.btnCadastrarEquip.Click += new System.EventHandler(this.btnCadastrarEquip_Click);
+            // 
+            // cmbCadEquip
+            // 
+            this.cmbCadEquip.FormattingEnabled = true;
+            this.cmbCadEquip.Location = new System.Drawing.Point(60, 88);
+            this.cmbCadEquip.Name = "cmbCadEquip";
+            this.cmbCadEquip.Size = new System.Drawing.Size(193, 21);
+            this.cmbCadEquip.TabIndex = 0;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnCadastrarTipo);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.tbValorTipo);
+            this.groupBox3.Controls.Add(this.tbNomeTipo);
+            this.groupBox3.Location = new System.Drawing.Point(6, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(303, 264);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Cadastrar tipo";
+            // 
+            // btnCadastrarTipo
+            // 
+            this.btnCadastrarTipo.Location = new System.Drawing.Point(87, 195);
+            this.btnCadastrarTipo.Name = "btnCadastrarTipo";
+            this.btnCadastrarTipo.Size = new System.Drawing.Size(113, 38);
+            this.btnCadastrarTipo.TabIndex = 4;
+            this.btnCadastrarTipo.Text = "Cadastrar";
+            this.btnCadastrarTipo.UseVisualStyleBackColor = true;
+            this.btnCadastrarTipo.Click += new System.EventHandler(this.btnCadastrarTipo_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(34, 131);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Valor: ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(30, 67);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Nome: ";
+            // 
+            // tbValorTipo
+            // 
+            this.tbValorTipo.Location = new System.Drawing.Point(87, 128);
+            this.tbValorTipo.Name = "tbValorTipo";
+            this.tbValorTipo.Size = new System.Drawing.Size(172, 20);
+            this.tbValorTipo.TabIndex = 1;
+            // 
+            // tbNomeTipo
+            // 
+            this.tbNomeTipo.Location = new System.Drawing.Point(87, 64);
+            this.tbNomeTipo.Name = "tbNomeTipo";
+            this.tbNomeTipo.Size = new System.Drawing.Size(172, 20);
+            this.tbNomeTipo.TabIndex = 0;
             // 
             // tabPage3
             // 
@@ -200,14 +297,15 @@
             this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox lstItens;
         private System.Windows.Forms.ComboBox cmbTipoItem;
@@ -221,6 +319,16 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnContAdd;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnCadastrarTipo;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbValorTipo;
+        private System.Windows.Forms.TextBox tbNomeTipo;
+        private System.Windows.Forms.Button btnCadastrarEquip;
+        private System.Windows.Forms.ComboBox cmbCadEquip;
     }
 }
 
