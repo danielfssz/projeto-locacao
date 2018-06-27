@@ -18,13 +18,14 @@ namespace ProjetoLocacao
         //é feita nessas duas listas
         List<TipoEquipamento> Estoque = new List<TipoEquipamento>();
         List<Contrato> Contratos = new List<Contrato>();
+        List<Contrato> ContratosLiberados = new List<Contrato>();
 
         List<ItemContrato> itensContrato = new List<ItemContrato>();
+        int idEquip = 0;
 
         public Form1()
         {
-            InitializeComponent();
-        }
+            InitializeComponent();        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -103,6 +104,13 @@ namespace ProjetoLocacao
             {
                 cmbCadEquip.Items.Add(te.Nome);
             }
+
+            //lista os itens na consulta de tipos
+            lstConsultaTipo.Items.Clear();
+            foreach (TipoEquipamento te in Estoque)
+            {
+                lstConsultaTipo.Items.Add(te.Nome);
+            }
         }
 
         private void btnCadastrarEquip_Click(object sender, EventArgs e)
@@ -114,9 +122,94 @@ namespace ProjetoLocacao
                 //a algum da lista de estoque ele adiciona o valor da variável
                 if (cmbCadEquip.Text == Estoque[i].Nome)
                 {
-                    Estoque[i].equipos.Enqueue(new Equipamento(Estoque[i]));
+                    idEquip = Estoque[i].equipos.Count + 1;
+                    Estoque[i].equipos.Enqueue(new Equipamento(idEquip, Estoque[i]));
                 }
             }
+
+            TipoEquipamento contagem = null;
+
+            //percorre todos os tipos de equipamentos do estoque
+            for (int i = 0; i < Estoque.Count; i++)
+            {
+                //quando o item selecionado no combobox for igual
+                //a algum da lista de estoque ele adiciona o valor da variável
+                if (cmbCadEquip.Text == Estoque[i].Nome)
+                {
+                    contagem = Estoque[i];
+                }
+            }
+
+            lblQtd.Text = "Quantidade: " + contagem.equipos.Count.ToString();
+        }
+
+        private void cmbCadEquip_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TipoEquipamento contagem = null;
+
+            //percorre todos os tipos de equipamentos do estoque
+            for (int i = 0; i < Estoque.Count; i++)
+            {
+                //quando o item selecionado no combobox for igual
+                //a algum da lista de estoque ele adiciona o valor da variável
+                if (cmbCadEquip.Text == Estoque[i].Nome)
+                {
+                    contagem = Estoque[i];
+                }
+            }
+
+            lblQtd.Text = "Quantidade: " + contagem.equipos.Count.ToString();
+        }
+
+        //botão pra gerar contrato
+        private void btnContAdd_Click(object sender, EventArgs e)
+        {   
+            //entra se tiver algum item de contrato
+            if (itensContrato.Count > 0)
+            {
+                //cria um novo contrato
+                Contratos.Add(new Contrato(DateTime.Now, dtpSaida.Value, itensContrato));
+
+                //limpa a lista temporária de itens de contrato e a lista que mostra os itens
+                lstItens.Items.Clear();
+                itensContrato.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Não há itens de contrato na lista!");
+            }
+        }
+
+        private void lstConsultaTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TipoEquipamento contagem = null;
+
+            //percorre todos os tipos de equipamentos do estoque
+            for (int i = 0; i < Estoque.Count; i++)
+            {
+                //quando o item selecionado no combobox for igual
+                //a algum da lista de estoque ele adiciona o valor da variável
+                if (lstConsultaTipo.Text == Estoque[i].Nome)
+                {
+                    contagem = Estoque[i];
+                }
+            }
+
+            lstConsultaEquip.Items.Clear();
+            foreach (Equipamento equip in contagem.equipos)
+            {
+                lstConsultaEquip.Items.Add("ID: " + equip.EquipId + " | Patrimônio: " + equip.Patrimonio + " | Avariado: " + equip.Avariado);
+            }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
@@ -125,11 +218,11 @@ namespace ProjetoLocacao
 
 //1. Cadastrar tipo de equipamento - Construtor da classe TipoEquipamento - OK
 
-//2. Consultar tipo de equipamento(com os respectivos itens cadastrados)
+//2. Consultar tipo de equipamento(com os respectivos itens cadastrados) - na Aba de consultas - OK
 
 //3. Cadastrar equipamento(item em um determinado tipo) - Construtor da classe Equipamento - OK
 
-//4. Registrar Contrato de Locação
+//4. Registrar Contrato de Locação - na aba Cadastro de equipamentos - OK
 
 //5. Consultar Contratos de Locação(com os respectivos itens contratados)
 

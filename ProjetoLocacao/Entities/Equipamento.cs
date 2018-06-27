@@ -19,29 +19,11 @@ namespace ProjetoLocacao.Controller
 
         #region construtores
 
-            public Equipamento(TipoEquipamento tipo)
+            public Equipamento(int id, TipoEquipamento tipo)
             {
-                EquipId = cadastrarID();
-                Patrimonio = gerarPatrimonio(tipo);
+                EquipId = id;
+                Patrimonio = tipo.Nome + id;
                 Avariado = false;
-            }
-
-        #endregion
-
-        #region métodos
-
-            public string gerarPatrimonio(TipoEquipamento tipo)
-            {
-                int aux = countPatrimonio;
-                countPatrimonio++;
-                return tipo.Nome + aux;
-            }
-
-            public int cadastrarID()
-            {
-                int aux = EquipId;
-                EquipId++;
-                return aux;
             }
 
         #endregion
