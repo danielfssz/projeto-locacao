@@ -62,6 +62,8 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.lstConsultaContratos = new System.Windows.Forms.ListBox();
+            this.lstItensContrato = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -72,6 +74,7 @@
             this.tabPage3.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -356,7 +359,6 @@
             this.label6.Size = new System.Drawing.Size(74, 13);
             this.label6.TabIndex = 3;
             this.label6.Text = "Equipamentos";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 
@@ -366,7 +368,6 @@
             this.label5.Size = new System.Drawing.Size(33, 13);
             this.label5.TabIndex = 2;
             this.label5.Text = "Tipos";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // lstConsultaEquip
             // 
@@ -387,6 +388,8 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.lstItensContrato);
+            this.tabPage6.Controls.Add(this.lstConsultaContratos);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
@@ -414,6 +417,23 @@
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // lstConsultaContratos
+            // 
+            this.lstConsultaContratos.FormattingEnabled = true;
+            this.lstConsultaContratos.Location = new System.Drawing.Point(21, 30);
+            this.lstConsultaContratos.Name = "lstConsultaContratos";
+            this.lstConsultaContratos.Size = new System.Drawing.Size(345, 186);
+            this.lstConsultaContratos.TabIndex = 10;
+            this.lstConsultaContratos.SelectedIndexChanged += new System.EventHandler(this.lstConsultaContratos_SelectedIndexChanged);
+            // 
+            // lstItensContrato
+            // 
+            this.lstItensContrato.FormattingEnabled = true;
+            this.lstItensContrato.Location = new System.Drawing.Point(386, 30);
+            this.lstItensContrato.Name = "lstItensContrato";
+            this.lstItensContrato.Size = new System.Drawing.Size(228, 186);
+            this.lstItensContrato.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -435,6 +455,7 @@
             this.tabControl2.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            this.tabPage6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -474,6 +495,8 @@
         private System.Windows.Forms.ListBox lstConsultaTipo;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox lstConsultaContratos;
+        private System.Windows.Forms.ListBox lstItensContrato;
     }
 }
 

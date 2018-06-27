@@ -21,17 +21,11 @@ namespace ProjetoLocacao
         List<Contrato> ContratosLiberados = new List<Contrato>();
 
         List<ItemContrato> itensContrato = new List<ItemContrato>();
-        int idEquip = 0;
+        int idEquip = 0, idContrato = 0;
 
         public Form1()
         {
-            InitializeComponent();        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            List<ItemContrato> listaItens = new List<Entities.ItemContrato>();
-
-            Contrato contrato = new Contrato(DateTime.Now, Convert.ToDateTime("12-12-2019"), listaItens);
+            InitializeComponent();
         }
 
         // botão para adicionar itens de contrato
@@ -168,15 +162,38 @@ namespace ProjetoLocacao
             if (itensContrato.Count > 0)
             {
                 //cria um novo contrato
-                Contratos.Add(new Contrato(DateTime.Now, dtpSaida.Value, itensContrato));
+                Contratos.Add(new Contrato(idContrato, DateTime.Now, dtpSaida.Value, itensContrato));
+                idContrato++;
 
                 //limpa a lista temporária de itens de contrato e a lista que mostra os itens
                 lstItens.Items.Clear();
                 itensContrato.Clear();
+
+                lstConsultaContratos.Items.Clear();
+                foreach (Contrato c in Contratos)
+                {
+                    lstConsultaContratos.Items.Add("ID: " + c.ContratoId + " | Data de saída: " + c.DtSaida.ToString("dd/mm/yyyy") + " | Data de retorno: " + c.DtRetorno.ToString("dd/mm/yyyy"));
+                }
             }
             else
             {
                 MessageBox.Show("Não há itens de contrato na lista!");
+            }
+        }
+
+        private void lstConsultaContratos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Contrato contagem = null;
+
+            //percorre todos os tipos de equipamentos do estoque
+            for (int i = 0; i < Contratos.Count; i++)
+            {
+                //quando o item selecionado no combobox for igual
+                //a algum da lista de estoque ele adiciona o valor da variável
+                //if (lstItensContrato.Text == Contratos[i].ContratoId)
+                //{
+                //    contagem = Contratos[i];
+                //}
             }
         }
 
@@ -200,16 +217,6 @@ namespace ProjetoLocacao
             {
                 lstConsultaEquip.Items.Add("ID: " + equip.EquipId + " | Patrimônio: " + equip.Patrimonio + " | Avariado: " + equip.Avariado);
             }
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
         }
     }
 

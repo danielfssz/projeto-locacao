@@ -16,8 +16,9 @@ namespace ProjetoLocacao.Entities
         #endregion
 
         #region métodos
-            public Contrato(DateTime dataSaida, DateTime dataRetorno, List<ItemContrato> lstItensContrato)
+            public Contrato(int id, DateTime dataSaida, DateTime dataRetorno, List<ItemContrato> lstItensContrato)
             {
+                ContratoId = id;
                 DtSaida = dataSaida;
                 DtRetorno = dataRetorno;
                 itensContrato = lstItensContrato;

@@ -13,7 +13,6 @@ namespace ProjetoLocacao.Controller
             public int EquipId { get; set; }
             public string Patrimonio { get; set; }
             public bool Avariado { get; set; }
-            private int countPatrimonio = 1;
 
         #endregion
 
