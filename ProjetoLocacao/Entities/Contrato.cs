@@ -27,10 +27,17 @@ namespace ProjetoLocacao.Entities
         #region métodos
         public Contrato(int id, DateTime dataSaida, DateTime dataRetorno, List<ItemContrato> lstItensContrato)
         {
+            List<ItemContrato> listTemp = new List<ItemContrato>();
+
+            foreach (ItemContrato yes in lstItensContrato)
+            {
+                listTemp.Add(new ItemContrato(yes.Id, yes.TipoEquipamento, yes.Qtde));               
+            }
+
             ContratoId = id;
             DtSaida = dataSaida;
             DtRetorno = dataRetorno;
-            itensContrato = lstItensContrato;
+            itensContrato = listTemp;
         }
 
         public Contrato(int id)

@@ -168,8 +168,15 @@ namespace ProjetoLocacao
             //entra se tiver algum item de contrato
             if (itensAContratar.Count > 0)
             {
+                if (dtpSaida.Value < dtpIncio.Value)
+                {
+                    MessageBox.Show("Valor de inicio nao pode ser maior do que o de saida");
+                    return;
+                }
+                List<ItemContrato> listPraPassar = new List<ItemContrato>();
+                listPraPassar = itensAContratar;
                 //cria um novo contrato
-                Contratos.Add(new Contrato(idContrato++ , DateTime.Now, dtpSaida.Value, itensAContratar));
+                Contratos.Add(new Contrato(idContrato++, DateTime.Now, dtpSaida.Value, listPraPassar));
 
                 //limpa a lista temporária de itens de contrato e a lista que mostra os itens
                 lstConsultaContratos.Items.Clear();
@@ -179,10 +186,7 @@ namespace ProjetoLocacao
                 }
 
                 lstItens.Items.Clear();
-
                 itensAContratar.Clear();
-                
-
             }
             else
             {
@@ -200,9 +204,9 @@ namespace ProjetoLocacao
             lstItensContrato.Items.Clear();
             foreach (ItemContrato IC in contratoPesq.ItensContrato)
             {
-                lstItensContrato.Items.Add(IC.Id +" | Nome:" + IC.TipoEquipamento.Nome + " | Qtde: " + IC.Qtde);
-            }          
-            
+                lstItensContrato.Items.Add(IC.Id + " | Nome:" + IC.TipoEquipamento.Nome + " | Qtde: " + IC.Qtde);
+            }
+
         }
 
         private void lstItens_SelectedIndexChanged(object sender, EventArgs e)
@@ -228,7 +232,7 @@ namespace ProjetoLocacao
                 Estoque[Estoque.IndexOf(itemContPesq.TipoEquipamento)].equipos.
                     Enqueue(itemContPesq.EquipamentosRetirados.Pop());
             }
-            
+
             itensAContratar.RemoveAt(itensAContratar.IndexOf(itemContPesq));
 
 
@@ -245,6 +249,12 @@ namespace ProjetoLocacao
 
         private void lstConsultaTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (lstConsultaTipo.SelectedItem == null)
+            {
+                MessageBox.Show("Selecione um item!");
+                return;
+            }
+
             int idPesq = retornaIndicePipe(lstConsultaTipo.SelectedItem.ToString());
             TipoEquipamento tpEqpPesquisado = pesquisarTipoEquipamento(new TipoEquipamento(idPesq));
 
@@ -292,7 +302,7 @@ namespace ProjetoLocacao
 
             return idPesq;
         }
-        
+
         //Pesquisas
         TipoEquipamento pesquisarTipoEquipamento(TipoEquipamento tipoEquipamento)
         {
@@ -304,7 +314,7 @@ namespace ProjetoLocacao
                 eqpAchado = null;
             return eqpAchado;
         }
-        
+
         ItemContrato pesquisarItemContrato(ItemContrato itemContrato)
         {
             ItemContrato itemAchado = new ItemContrato();

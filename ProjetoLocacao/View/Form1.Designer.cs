@@ -44,7 +44,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpIncio = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpSaida = new System.Windows.Forms.DateTimePicker();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -232,7 +232,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.dtpIncio);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.btnContAdd);
             this.groupBox2.Controls.Add(this.dtpSaida);
@@ -252,12 +252,12 @@
             this.label10.TabIndex = 10;
             this.label10.Text = "Data de Ínicio do Contrato:";
             // 
-            // dateTimePicker1
+            // dtpIncio
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(24, 46);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 20;
+            this.dtpIncio.Location = new System.Drawing.Point(24, 46);
+            this.dtpIncio.Name = "dtpIncio";
+            this.dtpIncio.Size = new System.Drawing.Size(200, 20);
+            this.dtpIncio.TabIndex = 20;
             // 
             // label1
             // 
@@ -583,7 +583,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblQtdeDisponivel;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpIncio;
         private System.Windows.Forms.Label label10;
     }
 }
