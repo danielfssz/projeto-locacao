@@ -35,6 +35,18 @@ namespace ProjetoLocacao
         // botão para adicionar itens de contrato
         private void btnItemAdd_Click(object sender, EventArgs e)
         {
+            if (nmItemQtd.Value == 0)
+            {
+                MessageBox.Show("Escolha um valor maior que zero!");
+                return;
+            }
+
+            if (cmbTipoItem.Text == "")
+            {
+                MessageBox.Show("Escolha um equipamento!");
+                return;
+            }
+
             int idPesq = retornaIndicePipe(cmbTipoItem.SelectedItem.ToString());
 
             TipoEquipamento tpEqpPesquisado = pesquisarTipoEquipamento(new TipoEquipamento(idPesq));
@@ -168,7 +180,12 @@ namespace ProjetoLocacao
                 }
 
                 lstItens.Items.Clear();
-                itensAContratar.Clear();
+
+                for (int i = 0; i < itensAContratar.Count; i++)
+                {
+                    itensAContratar.RemoveAt(i);
+                }
+                
             }
             else
             {
@@ -186,7 +203,7 @@ namespace ProjetoLocacao
             lstItensContrato.Items.Clear();
             foreach (ItemContrato IC in contratoPesq.ItensContrato)
             {
-                lstItensContrato.Items.Add(IC.Id +" | " + IC.TipoEquipamento + " | " + IC.Qtde);
+                lstItensContrato.Items.Add(IC.Id +" | Nome:" + IC.TipoEquipamento.Nome + " | Qtde: " + IC.Qtde);
             }          
             
         }
