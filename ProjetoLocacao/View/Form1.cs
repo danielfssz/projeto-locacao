@@ -43,7 +43,7 @@ namespace ProjetoLocacao
 
             if (tpEqpPesquisado.equipos.Count >= nmItemQtd.Value)
             {
-                ItemContrato novoItemContrato = new ItemContrato(tpEqpPesquisado, int.Parse(nmItemQtd.Value.ToString()));
+                ItemContrato novoItemContrato = new ItemContrato(idContrato++, tpEqpPesquisado, int.Parse(nmItemQtd.Value.ToString()));
 
                 for (int i = 0; i < nmItemQtd.Value; i++)
                 {
@@ -63,7 +63,7 @@ namespace ProjetoLocacao
             lstItens.Items.Clear();
             foreach (ItemContrato ic in itensAContratar)
             {
-                lstItens.Items.Add("ID: " + ic.TipoEquipamento.TipoEquipId + " | Tipo: " + ic.TipoEquipamento.Nome + " | Quantidade: " + ic.Qtde);
+                lstItens.Items.Add(ic.Id + " | ID: " + ic.TipoEquipamento.TipoEquipId + " | Tipo: " + ic.TipoEquipamento.Nome + " | Quantidade: " + ic.Qtde);
             }
         }
 
@@ -234,19 +234,22 @@ namespace ProjetoLocacao
         {
             int idPesq = retornaIndicePipe(lstItens.SelectedItem.ToString());
 
-            TipoEquipamento tpEqpPesquisado = pesquisarTipoEquipamento(new TipoEquipamento(idPesq));
+            ItemContrato itemContPesq = pesquisarItemContrato(new ItemContrato(idPesq));
 
+            for (int i = 0; i < itemContPesq.Qtde; i++)
+            {
+                Estoque[Estoque.IndexOf(itemContPesq.TipoEquipamento)].equipos.
+                    Enqueue(itemContPesq.EquipamentosRetirados.Pop());
+            }
             
-            Estoque.Add(Estoque[idConsultado]);
+            itensAContratar.Remove(itemContPesq);
+            lstItens.Items.Remove(lstItens.SelectedItem.ToString());
 
             lstItens.Items.Clear();
             foreach (ItemContrato ic in itensAContratar)
             {
                 lstItens.Items.Add("ID: " + ic.TipoEquipamento.TipoEquipId + " | Tipo: " + ic.TipoEquipamento.Nome + " | Quantidade: " + ic.Qtde);
             }
-            break;
-
-
         }
 
         private void lstConsultaTipo_SelectedIndexChanged(object sender, EventArgs e)
@@ -321,6 +324,17 @@ namespace ProjetoLocacao
             else
                 eqpAchado = null;
             return eqpAchado;
+        }
+        
+        ItemContrato pesquisarItemContrato(ItemContrato itemContrato)
+        {
+            ItemContrato itemAchado = new ItemContrato();
+            int i = itensAContratar.IndexOf(itemContrato);
+            if (i >= 0)
+                itemAchado = itensAContratar[i];
+            else
+                itemAchado = null;
+            return itemAchado;
         }
 
     }
