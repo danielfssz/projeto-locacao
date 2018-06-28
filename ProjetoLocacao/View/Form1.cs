@@ -20,9 +20,10 @@ namespace ProjetoLocacao
         List<Contrato> Contratos = new List<Contrato>();
         List<Contrato> ContratosLiberados = new List<Contrato>();
 
-        List<ItemContrato> itensContrato = new List<ItemContrato>();
+        //Lista temp
+        List<ItemContrato> itensAContratar = new List<ItemContrato>();
 
-        int idEquip = 0, idContrato = 0;
+        int idEquip = 0, idContrato = 0, idTipoEquip = 0;
 
         public Form1()
         {
@@ -34,44 +35,42 @@ namespace ProjetoLocacao
         // botão para adicionar itens de contrato
         private void btnItemAdd_Click(object sender, EventArgs e)
         {
+            int idPesq = retornaIndicePipe(cmbTipoItem.SelectedItem.ToString());
 
-            TipoEquipamento tipoItemContrato = null;
+            TipoEquipamento tpEqpPesquisado = pesquisarTipoEquipamento(new TipoEquipamento(idPesq));
 
-            //percorre todos os tipos de equipamentos do estoque
-            for (int i = 0; i < Estoque.Count; i++)
+            int posicaoNoEstoque = Estoque.IndexOf(tpEqpPesquisado);
+
+            if (tpEqpPesquisado.equipos.Count >= nmItemQtd.Value)
             {
-                //quando o item selecionado no combobox for igual
-                //a algum da lista de estoque ele adiciona o valor da variável
-                if (cmbTipoItem.Text == Estoque[i].TipoEquipId + " | " + Estoque[i].Nome)
+                ItemContrato novoItemContrato = new ItemContrato(tpEqpPesquisado, int.Parse(nmItemQtd.Value.ToString()));
+
+                for (int i = 0; i < nmItemQtd.Value; i++)
                 {
-                    tipoItemContrato = Estoque[i];
+                    novoItemContrato.EquipamentosRetirados.Push(Estoque[posicaoNoEstoque].equipos.Dequeue());
                 }
-            }
 
-            //se tiver equipamentos suficientes no estoque
-            //adiciona um item novo na lista de contratos
-            if (tipoItemContrato.equipos.Count >= int.Parse(nmItemQtd.Text))
-            {
-                itensContrato.Add(new ItemContrato(tipoItemContrato, int.Parse(nmItemQtd.Text)));
+                itensAContratar.Add(novoItemContrato);
             }
             else
             {
-                MessageBox.Show("Não há equipamentos suficientes no estoque!");
+                MessageBox.Show("Não há quantidade suficiente no estoque desse item!");
             }
+
+            lblQtdeDisponivel.Text = "Quantidade disponível: " + Estoque[posicaoNoEstoque].equipos.Count.ToString();
 
             //mostra os itens na lista
             lstItens.Items.Clear();
-            foreach (ItemContrato ic in itensContrato)
+            foreach (ItemContrato ic in itensAContratar)
             {
                 lstItens.Items.Add("ID: " + ic.TipoEquipamento.TipoEquipId + " | Tipo: " + ic.TipoEquipamento.Nome + " | Quantidade: " + ic.Qtde);
             }
         }
 
-        // botão pra cadastrar tipos de equipamento
+        // botão pra cadastrar tipos de equipamento OK
         private void btnCadastrarTipo_Click(object sender, EventArgs e)
         {
             string nome = tbNomeTipo.Text;
-
             double valor;
 
             //se o valor da textbox de valor for numérico, converte e pega
@@ -89,24 +88,24 @@ namespace ProjetoLocacao
             }
 
             //adiciona um novo tipo de equipamento no estoque
-            Estoque.Add(new TipoEquipamento(nome, valor));
+            Estoque.Add(new TipoEquipamento(idTipoEquip++, nome, valor));
 
             //limpa os campos
             tbNomeTipo.Clear();
             tbValorTipo.Clear();
+
+            //lista os tipos no cadastro de equipamentos para cadastrar a quantidade desse item no estoque
+            cmbCadEquip.Items.Clear();
+            foreach (TipoEquipamento te in Estoque)
+            {
+                cmbCadEquip.Items.Add(te.TipoEquipId + " | " + te.Nome);
+            }
 
             //lista os tipos no cadastro de contrato
             cmbTipoItem.Items.Clear();
             foreach (TipoEquipamento te in Estoque)
             {
                 cmbTipoItem.Items.Add(te.TipoEquipId + " | " + te.Nome);
-            }
-
-            //lista os tipos no cadastro de equipamentos
-            cmbCadEquip.Items.Clear();
-            foreach (TipoEquipamento te in Estoque)
-            {
-                cmbCadEquip.Items.Add(te.TipoEquipId + " | " + te.Nome);
             }
 
             //lista os itens na consulta de tipos
@@ -117,34 +116,19 @@ namespace ProjetoLocacao
             }
         }
 
+        //inserir quantidade no item do estoque
         private void btnCadastrarEquip_Click(object sender, EventArgs e)
         {
-            //percorre todos os tipos de equipamentos do estoque
-            for (int i = 0; i < Estoque.Count; i++)
-            {
-                //quando o item selecionado no combobox for igual
-                //a algum da lista de estoque ele adiciona o valor da variável
-                if (cmbCadEquip.Text == Estoque[i].TipoEquipId + " | " + Estoque[i].Nome)
-                {
-                    idEquip = Estoque[i].equipos.Count + 1;
-                    Estoque[i].equipos.Enqueue(new Equipamento(idEquip, Estoque[i]));
-                }
-            }
+            int idPesq = retornaIndicePipe(cmbCadEquip.SelectedItem.ToString());
 
-            TipoEquipamento contagem = null;
+            TipoEquipamento tpEqpPesquisado = pesquisarTipoEquipamento(new TipoEquipamento(idPesq));
 
-            //percorre todos os tipos de equipamentos do estoque
-            for (int i = 0; i < Estoque.Count; i++)
-            {
-                //quando o item selecionado no combobox for igual
-                //a algum da lista de estoque ele adiciona o valor da variável
-                if (cmbCadEquip.Text == Estoque[i].TipoEquipId + " | " + Estoque[i].Nome)
-                {
-                    contagem = Estoque[i];
-                }
-            }
+            int posicaoNoEstoque = Estoque.IndexOf(tpEqpPesquisado);
 
-            lblQtd.Text = "Quantidade: " + contagem.equipos.Count.ToString();
+            Estoque[posicaoNoEstoque].equipos.Enqueue(new Equipamento(idEquip++, Estoque[posicaoNoEstoque]));
+
+            lblQtd.Text = "Quantidade: " + Estoque[posicaoNoEstoque].equipos.Count.ToString();
+
         }
 
         private void cmbCadEquip_SelectedIndexChanged(object sender, EventArgs e)
@@ -170,15 +154,15 @@ namespace ProjetoLocacao
         private void btnContAdd_Click(object sender, EventArgs e)
         {
             //entra se tiver algum item de contrato
-            if (itensContrato.Count > 0)
+            if (itensAContratar.Count > 0)
             {
                 //cria um novo contrato
-                Contratos.Add(new Contrato(idContrato, DateTime.Now, dtpSaida.Value, itensContrato));
+                Contratos.Add(new Contrato(idContrato, DateTime.Now, dtpSaida.Value, itensAContratar));
                 idContrato++;
 
                 //limpa a lista temporária de itens de contrato e a lista que mostra os itens
                 lstItens.Items.Clear();
-                itensContrato.Clear();
+                itensAContratar.Clear();
 
                 lstConsultaContratos.Items.Clear();
                 foreach (Contrato c in Contratos)
@@ -248,28 +232,22 @@ namespace ProjetoLocacao
 
         private void btnItemRemove_Click(object sender, EventArgs e)
         {
-            string var = lstItens.SelectedItem.ToString();
-            char charPesq;
-            int idConsultado = 0;
-            string strIdConsultado = "";
+            int idPesq = retornaIndicePipe(lstItens.SelectedItem.ToString());
 
-            for (int i = 0; i < var.Length; i++)
+            TipoEquipamento tpEqpPesquisado = pesquisarTipoEquipamento(new TipoEquipamento(idPesq));
+
+            
+            Estoque.Add(Estoque[idConsultado]);
+
+            lstItens.Items.Clear();
+            foreach (ItemContrato ic in itensAContratar)
             {
-                if (var[i].ToString().Trim() == "|")
-                {
-                    idConsultado = int.Parse(var.Substring(4, i - 4).ToString());
-                    itensContrato.RemoveAt(idConsultado);
-                    Estoque.Add(Estoque[idConsultado]);
-
-                    lstItens.Items.Clear();
-                    foreach (ItemContrato ic in itensContrato)
-                    {
-                        lstItens.Items.Add("ID: " + ic.TipoEquipamento.TipoEquipId + " | Tipo: " + ic.TipoEquipamento.Nome + " | Quantidade: " + ic.Qtde);
-                    }
-                        break;
-                    }
-                }
+                lstItens.Items.Add("ID: " + ic.TipoEquipamento.TipoEquipId + " | Tipo: " + ic.TipoEquipamento.Nome + " | Quantidade: " + ic.Qtde);
             }
+            break;
+
+
+        }
 
         private void lstConsultaTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -292,6 +270,59 @@ namespace ProjetoLocacao
                 lstConsultaEquip.Items.Add("ID: " + equip.EquipId + " | Patrimônio: " + equip.Patrimonio + " | Avariado: " + equip.Avariado);
             }
         }
+
+        private void lblItemRemove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbTipoItem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idPesq = retornaIndicePipe(cmbTipoItem.SelectedItem.ToString());
+
+            TipoEquipamento tpEqpPesquisado = pesquisarTipoEquipamento(new TipoEquipamento(idPesq));
+
+            int posicaoNoEstoque = Estoque.IndexOf(tpEqpPesquisado);
+
+            lblQtdeDisponivel.Text = "Quantidade disponível: " + Estoque[posicaoNoEstoque].equipos.Count.ToString();
+        }
+
+
+
+
+        //Metodo que retorna o indice do pipe
+        int retornaIndicePipe(string var)
+        {
+            bool permiteCarater = false;
+            int contador = 0;
+            int idPesq = -1;
+
+            do
+            {
+                if (var[contador].ToString().Trim() == "|")
+                {
+                    idPesq = int.Parse(var.Substring(0, contador - 1));
+                    permiteCarater = true;
+                }
+                contador++;
+            } while (!permiteCarater);
+
+            return idPesq;
+        }
+
+
+        //Pesquisas
+        TipoEquipamento pesquisarTipoEquipamento(TipoEquipamento tipoEquipamento)
+        {
+            TipoEquipamento eqpAchado = new TipoEquipamento();
+            int i = Estoque.IndexOf(tipoEquipamento);
+            if (i >= 0)
+                eqpAchado = Estoque[i];
+            else
+                eqpAchado = null;
+            return eqpAchado;
+        }
+
     }
 
 }

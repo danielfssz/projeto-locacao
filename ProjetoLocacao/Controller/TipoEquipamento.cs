@@ -10,34 +10,39 @@ namespace ProjetoLocacao.Controller
     {
         #region atributos
 
-            public int TipoEquipId { get; set; }
-            public string Nome { get; set; }
-            public double Valor { get; set; }
-            public Queue<Equipamento> equipos;
+        public int TipoEquipId { get; set; }
+        public string Nome { get; set; }
+        public double Valor { get; set; }
+        public Queue<Equipamento> equipos;
 
         #endregion
 
         #region contrutores
 
-            public TipoEquipamento(string nome, double valor)
-            {
-                TipoEquipId = cadastrarID();
-                Nome = nome;
-                Valor = valor;
-                equipos = new Queue<Equipamento>();
-            }
+        public TipoEquipamento(int id, string nome, double valor)
+        {
+            TipoEquipId = id;
+            Nome = nome;
+            Valor = valor;
+            equipos = new Queue<Equipamento>();
+        }
+        public TipoEquipamento(int idEqp)
+        {
+            TipoEquipId = idEqp;
+        }
+
+        public TipoEquipamento()
+        {
+        }
 
         #endregion
 
         #region métodos
-
-            public int cadastrarID()
-            {
-                int aux = TipoEquipId;
-                TipoEquipId++;
-                return aux;
-            }
-
+                
+        public override bool Equals(object obj)
+        {
+            return this.TipoEquipId.Equals(((TipoEquipamento)obj).TipoEquipId);
+        }
         #endregion
     }
 }

@@ -26,5 +26,6 @@ namespace ProjetoLocacao.Controller
             }
 
         #endregion
+        
     }
 }

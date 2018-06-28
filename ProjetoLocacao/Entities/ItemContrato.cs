@@ -12,19 +12,14 @@ namespace ProjetoLocacao.Entities
         #region atributos
             public TipoEquipamento TipoEquipamento { get; set; }
             public int Qtde { get; set; }
-            Stack<Equipamento> EquipamentosRetirados = new Stack<Equipamento>();
+            public Stack<Equipamento> EquipamentosRetirados = new Stack<Equipamento>();
         #endregion
 
         #region construtores
             public ItemContrato(TipoEquipamento tipoEqpo, int qtdeRetirada)
             {
                 TipoEquipamento = tipoEqpo;
-                Qtde = qtdeRetirada;
-
-                for (int i = 0; i < qtdeRetirada; i++)
-                {
-                    EquipamentosRetirados.Push(tipoEqpo.equipos.Dequeue());
-                }
+                Qtde = qtdeRetirada;               
             }
         #endregion
     }
