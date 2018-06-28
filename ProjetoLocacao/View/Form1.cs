@@ -254,21 +254,11 @@ namespace ProjetoLocacao
 
         private void lstConsultaTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TipoEquipamento contagem = null;
-
-            //percorre todos os tipos de equipamentos do estoque
-            for (int i = 0; i < Estoque.Count; i++)
-            {
-                //quando o item selecionado no combobox for igual
-                //a algum da lista de estoque ele adiciona o valor da variável
-                if (lstConsultaTipo.Text == Estoque[i].Nome)
-                {
-                    contagem = Estoque[i];
-                }
-            }
+            int idPesq = retornaIndicePipe(lstConsultaTipo.SelectedItem.ToString());
+            TipoEquipamento tpEqpPesquisado = pesquisarTipoEquipamento(new TipoEquipamento(idPesq));
 
             lstConsultaEquip.Items.Clear();
-            foreach (Equipamento equip in contagem.equipos)
+            foreach (Equipamento equip in tpEqpPesquisado.equipos)
             {
                 lstConsultaEquip.Items.Add("ID: " + equip.EquipId + " | Patrimônio: " + equip.Patrimonio + " | Avariado: " + equip.Avariado);
             }
