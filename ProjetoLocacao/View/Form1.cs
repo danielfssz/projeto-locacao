@@ -242,14 +242,18 @@ namespace ProjetoLocacao
                     Enqueue(itemContPesq.EquipamentosRetirados.Pop());
             }
             
-            itensAContratar.Remove(itemContPesq);
+            itensAContratar.RemoveAt(itensAContratar.IndexOf(itemContPesq));
+
+
             lstItens.Items.Remove(lstItens.SelectedItem.ToString());
 
             lstItens.Items.Clear();
             foreach (ItemContrato ic in itensAContratar)
             {
-                lstItens.Items.Add("ID: " + ic.TipoEquipamento.TipoEquipId + " | Tipo: " + ic.TipoEquipamento.Nome + " | Quantidade: " + ic.Qtde);
+                lstItens.Items.Add(ic.Id + " | ID: " + ic.TipoEquipamento.TipoEquipId + " | Tipo: " + ic.TipoEquipamento.Nome + " | Quantidade: " + ic.Qtde);
             }
+            lblItemRemove.Hide();
+            btnItemRemove.Hide();
         }
 
         private void lstConsultaTipo_SelectedIndexChanged(object sender, EventArgs e)
@@ -312,8 +316,7 @@ namespace ProjetoLocacao
 
             return idPesq;
         }
-
-
+        
         //Pesquisas
         TipoEquipamento pesquisarTipoEquipamento(TipoEquipamento tipoEquipamento)
         {
