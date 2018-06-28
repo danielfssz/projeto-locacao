@@ -23,6 +23,18 @@ namespace ProjetoLocacao.Entities
                 DtRetorno = dataRetorno;
                 itensContrato = lstItensContrato;
             }
+
+            public Contrato(int id)
+            {
+                ContratoId = id;
+            }
+
+            public Contrato() { }
         #endregion
+
+        public override bool Equals(object obj)
+        {
+            return this.ContratoId.Equals(((Contrato)obj).ContratoId);
+        }
     }
 }

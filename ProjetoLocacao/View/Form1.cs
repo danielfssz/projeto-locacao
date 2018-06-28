@@ -178,26 +178,12 @@ namespace ProjetoLocacao
 
         private void lstConsultaContratos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Contrato contagem = null;
-
-            string var = lstConsultaContratos.SelectedItem.ToString();
-            char charPesq;
-            int idConsultado = 0;
-            string strIdConsultado = "";
-
-            for (int i = 0; i < var.Length; i++)
-            {
-                if (var[i].ToString().Trim() == "|")
-                {
-                    idConsultado = int.Parse(var.Substring(4, i - 4).ToString());
-                    break;
-                }
-            }
+            int idPesq = retornaIndicePipe(lstConsultaContratos.SelectedItem.ToString());
+            Contrato itemContPesq = pesquisarContrato(new Contrato(idPesq));
 
 
             lstItensContrato.Items.Clear();
-
-            foreach (ItemContrato eqp in Contratos[idConsultado].itensContrato)
+            foreach (Equipamento equip in itemContPesq.itensContrato)
             {
                 lstItensContrato.Items.Add(eqp.TipoEquipamento.Nome);
                 //lstItensContrato.Items.Add(eqp.TipoEquipamento.);
@@ -328,6 +314,17 @@ namespace ProjetoLocacao
             else
                 itemAchado = null;
             return itemAchado;
+        }
+
+        Contrato pesquisarContrato(Contrato contrato)
+        {
+            Contrato contratoAchado = new Contrato();
+            int i = Contratos.IndexOf(contrato);
+            if (i >= 0)
+                contratoAchado = Contratos[i];
+            else
+                contratoAchado = null;
+            return contratoAchado;
         }
 
     }
