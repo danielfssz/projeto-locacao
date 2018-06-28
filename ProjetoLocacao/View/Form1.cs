@@ -188,7 +188,7 @@ namespace ProjetoLocacao
                 lstContratosNaoLiberados.Items.Clear();
                 foreach (Contrato c in Contratos)
                 {
-                    lstContratosNaoLiberados.Items.Add(c.ContratoId + " | Data de saída: " + c.DtSaida.ToString("dd/mm/yyyy") + " | Data de retorno: " + c.DtRetorno.ToString("dd/mm/yyyy"));
+                    lstContratosNaoLiberados.Items.Add(c.ContratoId + " | Data de retorno: " + c.DtRetorno.ToString("dd/mm/yyyy"));
                 }
                 
                 lstItens.Items.Clear();
@@ -310,6 +310,23 @@ namespace ProjetoLocacao
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Test");
+        }
+
+        private void lstContratosNaoLiberados_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstContratosNaoLiberados == null)
+            {
+                MessageBox.Show("Selecione um contrato!");
+            }
+
+            int idPesq = retornaIndicePipe(lstContratosNaoLiberados.SelectedItem.ToString());
+            Contrato contratoPesq = pesquisarContrato(new Contrato(idPesq));
+
+            lstLiberaItensContrato.Items.Clear();
+            foreach (ItemContrato IC in contratoPesq.ItensContrato)
+            {
+                lstLiberaItensContrato.Items.Add(IC.Id + " | Nome:" + IC.TipoEquipamento.Nome + " | Qtde: " + IC.Qtde);
+            }
         }
 
 
