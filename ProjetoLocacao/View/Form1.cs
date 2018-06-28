@@ -183,10 +183,9 @@ namespace ProjetoLocacao
 
 
             lstItensContrato.Items.Clear();
-            foreach (Equipamento equip in itemContPesq.itensContrato)
+            foreach (ItemContrato IC in itemContPesq.itensContrato)
             {
-                lstItensContrato.Items.Add(eqp.TipoEquipamento.Nome);
-                //lstItensContrato.Items.Add(eqp.TipoEquipamento.);
+                lstItensContrato.Items.Add(IC.TipoEquipamento + " | " + IC.Qtde);
             }
 
 
