@@ -157,51 +157,38 @@ namespace ProjetoLocacao
             if (itensAContratar.Count > 0)
             {
                 //cria um novo contrato
-                Contratos.Add(new Contrato(idContrato, DateTime.Now, dtpSaida.Value, itensAContratar));
-                idContrato++;
-
+                Contratos.Add(new Contrato(idContrato++ , DateTime.Now, dtpSaida.Value, itensAContratar));
+                
                 //limpa a lista temporária de itens de contrato e a lista que mostra os itens
-                lstItens.Items.Clear();
-                itensAContratar.Clear();
-
+                
                 lstConsultaContratos.Items.Clear();
                 foreach (Contrato c in Contratos)
                 {
-                    lstConsultaContratos.Items.Add("ID: " + c.ContratoId + " | Data de saída: " + c.DtSaida.ToString("dd/mm/yyyy") + " | Data de retorno: " + c.DtRetorno.ToString("dd/mm/yyyy"));
+                    lstConsultaContratos.Items.Add(c.ContratoId + " | Data de saída: " + c.DtSaida.ToString("dd/mm/yyyy") + " | Data de retorno: " + c.DtRetorno.ToString("dd/mm/yyyy"));
                 }
+
+                lstItens.Items.Clear();
+                itensAContratar.Clear();
             }
             else
             {
                 MessageBox.Show("Não há itens de contrato na lista!");
             }
+
         }
 
         private void lstConsultaContratos_SelectedIndexChanged(object sender, EventArgs e)
         {
             int idPesq = retornaIndicePipe(lstConsultaContratos.SelectedItem.ToString());
-            Contrato itemContPesq = pesquisarContrato(new Contrato(idPesq));
-
+            Contrato contratoPesq = pesquisarContrato(new Contrato(idPesq));
+            int idContratos = Contratos.IndexOf(contratoPesq);
 
             lstItensContrato.Items.Clear();
-            foreach (ItemContrato IC in itemContPesq.itensContrato)
+            foreach (ItemContrato IC in contratoPesq.ItensContrato)
             {
-                lstItensContrato.Items.Add(IC.TipoEquipamento + " | " + IC.Qtde);
-            }
-
-
-
-
-
-            //percorre todos os tipos de equipamentos do estoque
-            for (int i = 0; i < Contratos.Count; i++)
-            {
-                //quando o item selecionado no combobox for igual
-                //a algum da lista de estoque ele adiciona o valor da variável
-                //if (lstItensContrato.Text == Contratos[i].ContratoId)
-                //{
-                //    contagem = Contratos[i];
-                //}
-            }
+                lstItensContrato.Items.Add(IC.Id +" | " + IC.TipoEquipamento + " | " + IC.Qtde);
+            }          
+            
         }
 
         private void lstItens_SelectedIndexChanged(object sender, EventArgs e)
@@ -214,6 +201,7 @@ namespace ProjetoLocacao
         {
 
         }
+
 
         private void btnItemRemove_Click(object sender, EventArgs e)
         {
@@ -270,8 +258,6 @@ namespace ProjetoLocacao
         }
 
 
-
-
         //Metodo que retorna o indice do pipe
         int retornaIndicePipe(string var)
         {
@@ -325,7 +311,6 @@ namespace ProjetoLocacao
                 contratoAchado = null;
             return contratoAchado;
         }
-
     }
 
 }

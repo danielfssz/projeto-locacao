@@ -43,6 +43,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpSaida = new System.Windows.Forms.DateTimePicker();
@@ -70,7 +71,6 @@
             this.lstConsultaContratos = new System.Windows.Forms.ListBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmItemQtd)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -197,7 +197,7 @@
             // 
             // btnContAdd
             // 
-            this.btnContAdd.Location = new System.Drawing.Point(116, 207);
+            this.btnContAdd.Location = new System.Drawing.Point(74, 208);
             this.btnContAdd.Name = "btnContAdd";
             this.btnContAdd.Size = new System.Drawing.Size(108, 38);
             this.btnContAdd.TabIndex = 13;
@@ -242,6 +242,15 @@
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Gerar contrato";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(21, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(134, 13);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "Data de Ínicio do Contrato:";
             // 
             // dateTimePicker1
             // 
@@ -471,15 +480,15 @@
             // lstItensContrato
             // 
             this.lstItensContrato.FormattingEnabled = true;
-            this.lstItensContrato.Location = new System.Drawing.Point(386, 30);
+            this.lstItensContrato.Location = new System.Drawing.Point(357, 64);
             this.lstItensContrato.Name = "lstItensContrato";
-            this.lstItensContrato.Size = new System.Drawing.Size(228, 186);
+            this.lstItensContrato.Size = new System.Drawing.Size(239, 186);
             this.lstItensContrato.TabIndex = 11;
             // 
             // lstConsultaContratos
             // 
             this.lstConsultaContratos.FormattingEnabled = true;
-            this.lstConsultaContratos.Location = new System.Drawing.Point(21, 30);
+            this.lstConsultaContratos.Location = new System.Drawing.Point(6, 64);
             this.lstConsultaContratos.Name = "lstConsultaContratos";
             this.lstConsultaContratos.Size = new System.Drawing.Size(345, 186);
             this.lstConsultaContratos.TabIndex = 10;
@@ -503,15 +512,6 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(21, 30);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(134, 13);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "Data de Ínicio do Contrato:";
             // 
             // Form1
             // 
