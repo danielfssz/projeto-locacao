@@ -23,7 +23,7 @@ namespace ProjetoLocacao
         //Lista temp
         List<ItemContrato> itensAContratar = new List<ItemContrato>();
 
-        int idEquip = 0, idContrato = 0, idTipoEquip = 0;
+        int idEquip = 0, idContrato = 0, idTipoEquip = 0, idItemContrato = 0;
 
         public Form1()
         {
@@ -55,7 +55,7 @@ namespace ProjetoLocacao
 
             if (tpEqpPesquisado.equipos.Count >= nmItemQtd.Value)
             {
-                ItemContrato novoItemContrato = new ItemContrato(idContrato++, tpEqpPesquisado, int.Parse(nmItemQtd.Value.ToString()));
+                ItemContrato novoItemContrato = new ItemContrato(idItemContrato++, tpEqpPesquisado, int.Parse(nmItemQtd.Value.ToString()));
 
                 for (int i = 0; i < nmItemQtd.Value; i++)
                 {
@@ -170,9 +170,15 @@ namespace ProjetoLocacao
             {
                 //cria um novo contrato
                 Contratos.Add(new Contrato(idContrato++ , DateTime.Now, dtpSaida.Value, itensAContratar));
-                
+
+                //teste
+                foreach (Contrato c in Contratos)
+                {
+                    MessageBox.Show(c.ItensContrato.Count.ToString());
+                }
+                //teste
+
                 //limpa a lista temporária de itens de contrato e a lista que mostra os itens
-                
                 lstConsultaContratos.Items.Clear();
                 foreach (Contrato c in Contratos)
                 {
@@ -181,11 +187,9 @@ namespace ProjetoLocacao
 
                 lstItens.Items.Clear();
 
-                for (int i = 0; i < itensAContratar.Count; i++)
-                {
-                    itensAContratar.RemoveAt(i);
-                }
+                itensAContratar.Clear();
                 
+
             }
             else
             {
@@ -265,6 +269,7 @@ namespace ProjetoLocacao
 
         private void cmbTipoItem_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             int idPesq = retornaIndicePipe(cmbTipoItem.SelectedItem.ToString());
 
             TipoEquipamento tpEqpPesquisado = pesquisarTipoEquipamento(new TipoEquipamento(idPesq));
