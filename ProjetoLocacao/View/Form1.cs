@@ -18,7 +18,7 @@ namespace ProjetoLocacao
         //é feita nessas duas listas
         List<TipoEquipamento> Estoque = new List<TipoEquipamento>();
         List<Contrato> Contratos = new List<Contrato>();
-        List<Contrato> ContratosLiberados = new List<Contrato>();
+        //List<Contrato> ContratosLiberados = new List<Contrato>();
 
         //Lista temp
         List<ItemContrato> itensAContratar = new List<ItemContrato>();
@@ -185,6 +185,12 @@ namespace ProjetoLocacao
                     lstConsultaContratos.Items.Add(c.ContratoId + " | Data de saída: " + c.DtSaida.ToString("dd/mm/yyyy") + " | Data de retorno: " + c.DtRetorno.ToString("dd/mm/yyyy"));
                 }
 
+                lstContratosNaoLiberados.Items.Clear();
+                foreach (Contrato c in Contratos)
+                {
+                    lstContratosNaoLiberados.Items.Add(c.ContratoId + " | Data de saída: " + c.DtSaida.ToString("dd/mm/yyyy") + " | Data de retorno: " + c.DtRetorno.ToString("dd/mm/yyyy"));
+                }
+                
                 lstItens.Items.Clear();
                 itensAContratar.Clear();
             }
@@ -219,7 +225,6 @@ namespace ProjetoLocacao
         {
 
         }
-
 
         private void btnItemRemove_Click(object sender, EventArgs e)
         {
@@ -282,7 +287,6 @@ namespace ProjetoLocacao
             lblQtdeDisponivel.Text = "Quantidade disponível: " + Estoque[posicaoNoEstoque].equipos.Count.ToString();
         }
 
-
         //Metodo que retorna o indice do pipe
         int retornaIndicePipe(string var)
         {
@@ -302,6 +306,12 @@ namespace ProjetoLocacao
 
             return idPesq;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Test");
+        }
+
 
         //Pesquisas
         TipoEquipamento pesquisarTipoEquipamento(TipoEquipamento tipoEquipamento)

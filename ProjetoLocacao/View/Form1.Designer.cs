@@ -68,10 +68,13 @@ namespace ProjetoLocacao
             this.lstConsultaEquip = new System.Windows.Forms.ListBox();
             this.lstConsultaTipo = new System.Windows.Forms.ListBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
             this.lstItensContrato = new System.Windows.Forms.ListBox();
             this.lstConsultaContratos = new System.Windows.Forms.ListBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lstContratosNaoLiberados = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmItemQtd)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -84,6 +87,7 @@ namespace ProjetoLocacao
             this.tabControl2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -434,7 +438,7 @@ namespace ProjetoLocacao
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(317, 21);
+            this.label6.Location = new System.Drawing.Point(316, 45);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(74, 13);
             this.label6.TabIndex = 3;
@@ -443,16 +447,16 @@ namespace ProjetoLocacao
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(32, 21);
+            this.label5.Location = new System.Drawing.Point(6, 45);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 13);
+            this.label5.Size = new System.Drawing.Size(169, 13);
             this.label5.TabIndex = 2;
-            this.label5.Text = "Tipos";
+            this.label5.Text = "Tipos de Equipamento no estoque";
             // 
             // lstConsultaEquip
             // 
             this.lstConsultaEquip.FormattingEnabled = true;
-            this.lstConsultaEquip.Location = new System.Drawing.Point(320, 40);
+            this.lstConsultaEquip.Location = new System.Drawing.Point(319, 64);
             this.lstConsultaEquip.Name = "lstConsultaEquip";
             this.lstConsultaEquip.Size = new System.Drawing.Size(277, 186);
             this.lstConsultaEquip.TabIndex = 1;
@@ -460,7 +464,7 @@ namespace ProjetoLocacao
             // lstConsultaTipo
             // 
             this.lstConsultaTipo.FormattingEnabled = true;
-            this.lstConsultaTipo.Location = new System.Drawing.Point(32, 40);
+            this.lstConsultaTipo.Location = new System.Drawing.Point(6, 64);
             this.lstConsultaTipo.Name = "lstConsultaTipo";
             this.lstConsultaTipo.Size = new System.Drawing.Size(228, 186);
             this.lstConsultaTipo.TabIndex = 0;
@@ -468,6 +472,7 @@ namespace ProjetoLocacao
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.label11);
             this.tabPage6.Controls.Add(this.lstItensContrato);
             this.tabPage6.Controls.Add(this.lstConsultaContratos);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
@@ -477,6 +482,16 @@ namespace ProjetoLocacao
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "Contratos de locação";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
+            this.label11.Location = new System.Drawing.Point(6, 41);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(248, 15);
+            this.label11.TabIndex = 12;
+            this.label11.Text = "Clique no contrato para ver os itens ao lado!!";
             // 
             // lstItensContrato
             // 
@@ -506,13 +521,32 @@ namespace ProjetoLocacao
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.label12);
+            this.tabPage4.Controls.Add(this.lstContratosNaoLiberados);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(632, 276);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "tabPage4";
+            this.tabPage4.Text = "Devolução de contratos";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 75);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(55, 13);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Contratos ";
+            // 
+            // lstContratosNaoLiberados
+            // 
+            this.lstContratosNaoLiberados.FormattingEnabled = true;
+            this.lstContratosNaoLiberados.Location = new System.Drawing.Point(6, 91);
+            this.lstContratosNaoLiberados.Name = "lstContratosNaoLiberados";
+            this.lstContratosNaoLiberados.Size = new System.Drawing.Size(347, 173);
+            this.lstContratosNaoLiberados.TabIndex = 0;
             // 
             // Form1
             // 
@@ -538,6 +572,9 @@ namespace ProjetoLocacao
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -553,7 +590,6 @@ namespace ProjetoLocacao
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnContAdd;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -586,5 +622,10 @@ namespace ProjetoLocacao
         private System.Windows.Forms.Label lblQtdeDisponivel;
         private System.Windows.Forms.DateTimePicker dtpIncio;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ListBox lstContratosNaoLiberados;
+        private System.Windows.Forms.Button button1;
     }
 }
