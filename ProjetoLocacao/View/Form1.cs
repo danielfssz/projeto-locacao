@@ -171,13 +171,6 @@ namespace ProjetoLocacao
                 //cria um novo contrato
                 Contratos.Add(new Contrato(idContrato++ , DateTime.Now, dtpSaida.Value, itensAContratar));
 
-                //teste
-                foreach (Contrato c in Contratos)
-                {
-                    MessageBox.Show(c.ItensContrato.Count.ToString());
-                }
-                //teste
-
                 //limpa a lista temporária de itens de contrato e a lista que mostra os itens
                 lstConsultaContratos.Items.Clear();
                 foreach (Contrato c in Contratos)
