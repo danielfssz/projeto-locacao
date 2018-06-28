@@ -1,4 +1,5 @@
-﻿namespace ProjetoLocacao
+﻿
+namespace ProjetoLocacao
 {
     partial class Form1
     {
@@ -59,18 +60,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbValorTipo = new System.Windows.Forms.TextBox();
             this.tbNomeTipo = new System.Windows.Forms.TextBox();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.lstConsultaContratos = new System.Windows.Forms.ListBox();
-            this.lstItensContrato = new System.Windows.Forms.ListBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.lstConsultaTipo = new System.Windows.Forms.ListBox();
-            this.lstConsultaEquip = new System.Windows.Forms.ListBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lstConsultaEquip = new System.Windows.Forms.ListBox();
+            this.lstConsultaTipo = new System.Windows.Forms.ListBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.lstItensContrato = new System.Windows.Forms.ListBox();
+            this.lstConsultaContratos = new System.Windows.Forms.ListBox();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmItemQtd)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -80,6 +81,9 @@
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -207,6 +211,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -390,102 +395,6 @@
             this.tbNomeTipo.Size = new System.Drawing.Size(222, 20);
             this.tbNomeTipo.TabIndex = 0;
             // 
-            // tabControl2
-            // 
-            this.tabControl2.Location = new System.Drawing.Point(-4, -2);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(641, 282);
-            this.tabControl2.TabIndex = 0;
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(633, 256);
-            this.tabPage7.TabIndex = 2;
-            this.tabPage7.Text = "Contratos de locação liberados";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(633, 256);
-            this.tabPage6.TabIndex = 1;
-            this.tabPage6.Text = "Contratos de locação";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // lstConsultaContratos
-            // 
-            this.lstConsultaContratos.FormattingEnabled = true;
-            this.lstConsultaContratos.Location = new System.Drawing.Point(6, 64);
-            this.lstConsultaContratos.Name = "lstConsultaContratos";
-            this.lstConsultaContratos.Size = new System.Drawing.Size(345, 186);
-            this.lstConsultaContratos.TabIndex = 10;
-            this.lstConsultaContratos.SelectedIndexChanged += new System.EventHandler(this.lstConsultaContratos_SelectedIndexChanged);
-            // 
-            // lstItensContrato
-            // 
-            this.lstItensContrato.FormattingEnabled = true;
-            this.lstItensContrato.Location = new System.Drawing.Point(357, 64);
-            this.lstItensContrato.Name = "lstItensContrato";
-            this.lstItensContrato.Size = new System.Drawing.Size(239, 186);
-            this.lstItensContrato.TabIndex = 11;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(3, 39);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(547, 20);
-            this.label11.TabIndex = 12;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(633, 256);
-            this.tabPage5.TabIndex = 0;
-            this.tabPage5.Text = "Tipo de equipamento";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // lstConsultaTipo
-            // 
-            this.lstConsultaTipo.FormattingEnabled = true;
-            this.lstConsultaTipo.Location = new System.Drawing.Point(32, 40);
-            this.lstConsultaTipo.Name = "lstConsultaTipo";
-            this.lstConsultaTipo.Size = new System.Drawing.Size(228, 186);
-            this.lstConsultaTipo.TabIndex = 0;
-            this.lstConsultaTipo.SelectedIndexChanged += new System.EventHandler(this.lstConsultaTipo_SelectedIndexChanged);
-            // 
-            // lstConsultaEquip
-            // 
-            this.lstConsultaEquip.FormattingEnabled = true;
-            this.lstConsultaEquip.Location = new System.Drawing.Point(320, 40);
-            this.lstConsultaEquip.Name = "lstConsultaEquip";
-            this.lstConsultaEquip.Size = new System.Drawing.Size(277, 186);
-            this.lstConsultaEquip.TabIndex = 1;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(32, 21);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(92, 13);
-            this.label5.TabIndex = 2;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(317, 21);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(133, 13);
-            this.label6.TabIndex = 3;
-            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.tabControl2);
@@ -496,6 +405,114 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Consultas";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage5);
+            this.tabControl2.Controls.Add(this.tabPage6);
+            this.tabControl2.Controls.Add(this.tabPage7);
+            this.tabControl2.Location = new System.Drawing.Point(-4, -2);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(641, 282);
+            this.tabControl2.TabIndex = 0;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.label6);
+            this.tabPage5.Controls.Add(this.label5);
+            this.tabPage5.Controls.Add(this.lstConsultaEquip);
+            this.tabPage5.Controls.Add(this.lstConsultaTipo);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(633, 256);
+            this.tabPage5.TabIndex = 0;
+            this.tabPage5.Text = "Tipo de equipamento";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(317, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Equipamentos";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(32, 21);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(33, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Tipos";
+            // 
+            // lstConsultaEquip
+            // 
+            this.lstConsultaEquip.FormattingEnabled = true;
+            this.lstConsultaEquip.Location = new System.Drawing.Point(320, 40);
+            this.lstConsultaEquip.Name = "lstConsultaEquip";
+            this.lstConsultaEquip.Size = new System.Drawing.Size(277, 186);
+            this.lstConsultaEquip.TabIndex = 1;
+            // 
+            // lstConsultaTipo
+            // 
+            this.lstConsultaTipo.FormattingEnabled = true;
+            this.lstConsultaTipo.Location = new System.Drawing.Point(32, 40);
+            this.lstConsultaTipo.Name = "lstConsultaTipo";
+            this.lstConsultaTipo.Size = new System.Drawing.Size(228, 186);
+            this.lstConsultaTipo.TabIndex = 0;
+            this.lstConsultaTipo.SelectedIndexChanged += new System.EventHandler(this.lstConsultaTipo_SelectedIndexChanged);
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.lstItensContrato);
+            this.tabPage6.Controls.Add(this.lstConsultaContratos);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(633, 256);
+            this.tabPage6.TabIndex = 1;
+            this.tabPage6.Text = "Contratos de locação";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // lstItensContrato
+            // 
+            this.lstItensContrato.FormattingEnabled = true;
+            this.lstItensContrato.Location = new System.Drawing.Point(357, 64);
+            this.lstItensContrato.Name = "lstItensContrato";
+            this.lstItensContrato.Size = new System.Drawing.Size(239, 186);
+            this.lstItensContrato.TabIndex = 11;
+            // 
+            // lstConsultaContratos
+            // 
+            this.lstConsultaContratos.FormattingEnabled = true;
+            this.lstConsultaContratos.Location = new System.Drawing.Point(6, 64);
+            this.lstConsultaContratos.Name = "lstConsultaContratos";
+            this.lstConsultaContratos.Size = new System.Drawing.Size(345, 186);
+            this.lstConsultaContratos.TabIndex = 10;
+            this.lstConsultaContratos.SelectedIndexChanged += new System.EventHandler(this.lstConsultaContratos_SelectedIndexChanged);
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(633, 256);
+            this.tabPage7.TabIndex = 2;
+            this.tabPage7.Text = "Contratos de locação liberados";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(632, 276);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "tabPage4";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -517,6 +534,10 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            this.tabPage6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -531,6 +552,8 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnContAdd;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -545,6 +568,16 @@
         private System.Windows.Forms.DateTimePicker dtpSaida;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblQtd;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.ListBox lstConsultaEquip;
+        private System.Windows.Forms.ListBox lstConsultaTipo;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox lstConsultaContratos;
+        private System.Windows.Forms.ListBox lstItensContrato;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown nmItemQtd;
         private System.Windows.Forms.Label label9;
@@ -553,18 +586,5 @@
         private System.Windows.Forms.Label lblQtdeDisponivel;
         private System.Windows.Forms.DateTimePicker dtpIncio;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabControl tabControl2;
-        private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.ListBox lstConsultaContratos;
-        private System.Windows.Forms.ListBox lstItensContrato;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.ListBox lstConsultaTipo;
-        private System.Windows.Forms.ListBox lstConsultaEquip;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
     }
 }
-
