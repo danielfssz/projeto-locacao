@@ -73,14 +73,15 @@ namespace ProjetoLocacao
             this.lstConsultaContratos = new System.Windows.Forms.ListBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnLiberaContrato = new System.Windows.Forms.Button();
+            this.chkAvariado = new System.Windows.Forms.CheckBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cmbEquipamentos = new System.Windows.Forms.ComboBox();
+            this.lstLiberaItensContrato = new System.Windows.Forms.ListBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lstContratosNaoLiberados = new System.Windows.Forms.ListBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.lstLiberaItensContrato = new System.Windows.Forms.ListBox();
-            this.cmbEquipamentos = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.chkAvariado = new System.Windows.Forms.CheckBox();
-            this.btnLiberaContrato = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmItemQtd)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -527,6 +528,7 @@ namespace ProjetoLocacao
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.button2);
             this.tabPage4.Controls.Add(this.btnLiberaContrato);
             this.tabPage4.Controls.Add(this.chkAvariado);
             this.tabPage4.Controls.Add(this.label14);
@@ -542,6 +544,62 @@ namespace ProjetoLocacao
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Devolução de contratos";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btnLiberaContrato
+            // 
+            this.btnLiberaContrato.Location = new System.Drawing.Point(490, 207);
+            this.btnLiberaContrato.Name = "btnLiberaContrato";
+            this.btnLiberaContrato.Size = new System.Drawing.Size(124, 57);
+            this.btnLiberaContrato.TabIndex = 7;
+            this.btnLiberaContrato.Text = "Liberar Contrato";
+            this.btnLiberaContrato.UseVisualStyleBackColor = true;
+            // 
+            // chkAvariado
+            // 
+            this.chkAvariado.AutoSize = true;
+            this.chkAvariado.Location = new System.Drawing.Point(405, 118);
+            this.chkAvariado.Name = "chkAvariado";
+            this.chkAvariado.Size = new System.Drawing.Size(67, 17);
+            this.chkAvariado.TabIndex = 6;
+            this.chkAvariado.Text = "avariado";
+            this.chkAvariado.UseVisualStyleBackColor = true;
+            this.chkAvariado.CheckedChanged += new System.EventHandler(this.chkAvariado_CheckedChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(402, 75);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(127, 13);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "Selecione o equipamento";
+            // 
+            // cmbEquipamentos
+            // 
+            this.cmbEquipamentos.FormattingEnabled = true;
+            this.cmbEquipamentos.Location = new System.Drawing.Point(402, 91);
+            this.cmbEquipamentos.Name = "cmbEquipamentos";
+            this.cmbEquipamentos.Size = new System.Drawing.Size(121, 21);
+            this.cmbEquipamentos.TabIndex = 4;
+            this.cmbEquipamentos.SelectedIndexChanged += new System.EventHandler(this.cmbEquipamentos_SelectedIndexChanged);
+            // 
+            // lstLiberaItensContrato
+            // 
+            this.lstLiberaItensContrato.FormattingEnabled = true;
+            this.lstLiberaItensContrato.Location = new System.Drawing.Point(260, 91);
+            this.lstLiberaItensContrato.Name = "lstLiberaItensContrato";
+            this.lstLiberaItensContrato.Size = new System.Drawing.Size(136, 173);
+            this.lstLiberaItensContrato.TabIndex = 3;
+            this.lstLiberaItensContrato.SelectedIndexChanged += new System.EventHandler(this.lstLiberaItensContrato_SelectedIndexChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(257, 75);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(88, 13);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Itens do Contrato";
             // 
             // label12
             // 
@@ -561,61 +619,15 @@ namespace ProjetoLocacao
             this.lstContratosNaoLiberados.TabIndex = 0;
             this.lstContratosNaoLiberados.SelectedIndexChanged += new System.EventHandler(this.lstContratosNaoLiberados_SelectedIndexChanged);
             // 
-            // label13
+            // button2
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(257, 75);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(88, 13);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Itens do Contrato";
-            // 
-            // lstLiberaItensContrato
-            // 
-            this.lstLiberaItensContrato.FormattingEnabled = true;
-            this.lstLiberaItensContrato.Location = new System.Drawing.Point(260, 91);
-            this.lstLiberaItensContrato.Name = "lstLiberaItensContrato";
-            this.lstLiberaItensContrato.Size = new System.Drawing.Size(136, 173);
-            this.lstLiberaItensContrato.TabIndex = 3;
-            this.lstLiberaItensContrato.SelectedIndexChanged += new System.EventHandler(this.lstLiberaItensContrato_SelectedIndexChanged);
-            // 
-            // cmbEquipamentos
-            // 
-            this.cmbEquipamentos.FormattingEnabled = true;
-            this.cmbEquipamentos.Location = new System.Drawing.Point(402, 91);
-            this.cmbEquipamentos.Name = "cmbEquipamentos";
-            this.cmbEquipamentos.Size = new System.Drawing.Size(121, 21);
-            this.cmbEquipamentos.TabIndex = 4;
-            this.cmbEquipamentos.SelectedIndexChanged += new System.EventHandler(this.cmbEquipamentos_SelectedIndexChanged);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(402, 75);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(127, 13);
-            this.label14.TabIndex = 5;
-            this.label14.Text = "Selecione o equipamento";
-            // 
-            // chkAvariado
-            // 
-            this.chkAvariado.AutoSize = true;
-            this.chkAvariado.Location = new System.Drawing.Point(405, 118);
-            this.chkAvariado.Name = "chkAvariado";
-            this.chkAvariado.Size = new System.Drawing.Size(67, 17);
-            this.chkAvariado.TabIndex = 6;
-            this.chkAvariado.Text = "avariado";
-            this.chkAvariado.UseVisualStyleBackColor = true;
-            this.chkAvariado.CheckedChanged += new System.EventHandler(this.chkAvariado_CheckedChanged);
-            // 
-            // btnLiberaContrato
-            // 
-            this.btnLiberaContrato.Location = new System.Drawing.Point(490, 207);
-            this.btnLiberaContrato.Name = "btnLiberaContrato";
-            this.btnLiberaContrato.Size = new System.Drawing.Size(124, 57);
-            this.btnLiberaContrato.TabIndex = 7;
-            this.btnLiberaContrato.Text = "Liberar Contrato";
-            this.btnLiberaContrato.UseVisualStyleBackColor = true;
+            this.button2.Location = new System.Drawing.Point(405, 224);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
@@ -702,5 +714,6 @@ namespace ProjetoLocacao
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cmbEquipamentos;
         private System.Windows.Forms.Button btnLiberaContrato;
+        private System.Windows.Forms.Button button2;
     }
 }

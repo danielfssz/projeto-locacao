@@ -165,6 +165,8 @@ namespace ProjetoLocacao
         //botão pra gerar contrato
         private void btnContAdd_Click(object sender, EventArgs e)
         {
+            List<int> lstIdContratos = new List<int>();
+
             //entra se tiver algum item de contrato
             if (itensAContratar.Count > 0)
             {
@@ -189,6 +191,7 @@ namespace ProjetoLocacao
                 foreach (Contrato c in Contratos)
                 {
                     lstContratosNaoLiberados.Items.Add(c.ContratoId + " | Data de retorno: " + c.DtRetorno.ToString("dd/mm/yyyy"));
+                    lstIdContratos.Add(c.ContratoId);
                 }
                 
                 lstItens.Items.Clear();
@@ -353,16 +356,27 @@ namespace ProjetoLocacao
 
         }
         List<Equipamento> listaEqpASerVerificada = new List<Equipamento>();
+        Equipamento equipAchado;
         private void cmbEquipamentos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listaEqpASerVerificada.Add(vaiSerPesquisado.ItensContrato[itemSelecionado.Id].EquipamentosRetirados.Pop());
-            
-            listaEqpASerVerificada.Find()
+            /*
+            foreach (Equipamento eqp in vaiSerPesquisado.ItensContrato.Find(itemSelecionado).EquipamentosRetirados)
+            {
+                listaEqpASerVerificada.Add(vaiSerPesquisado.ItensContrato[itemSelecionado.Id].EquipamentosRetirados.Pop());
+            }
+
+            int idEqpPesq = retornaIndicePipe(cmbEquipamentos.SelectedItem.ToString());
+
+            Equipamento eqpPesquisado = pesquisarEquipamento(listaEqpASerVerificada,new Equipamento(idEqpPesq));
+
+            equipAchado = eqpPesquisado;
+            //listaEqpASerVerificada.
+            */
         }
 
         private void chkAvariado_CheckedChanged(object sender, EventArgs e)
         {
-
+            equipAchado.Avariado = true;
         }
 
 
@@ -391,6 +405,11 @@ namespace ProjetoLocacao
             return itemAchado;
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Contrato c = new Contrato(0);
+            MessageBox.Show(Contratos[Contratos.IndexOf(c)].DtRetorno.ToString());
+        }
 
         ItemContrato pesquisarItemContrato(ItemContrato itemContrato)
         {
@@ -414,16 +433,17 @@ namespace ProjetoLocacao
             return contratoAchado;
         }
 
-        Equipamento pesquisarEquipamento(Contrato contrato, ItemContrato itemContrato, Equipamento equipamento)
+        Equipamento pesquisarEquipamento(List<Equipamento> lstEqp,Equipamento equipamento)
         {
-            Equipamento equipamentoAchado = new Equipamento();
-            int i = contrato.ItensContrato[itemContrato.Id].EquipamentosRetirados.s(equipamento);
+            Equipamento eqpAchado = new Equipamento();
+            int i = lstEqp.IndexOf(equipamento);
             if (i >= 0)
-                equipamentoAchado = Contratos[i];
+                eqpAchado = lstEqp[i];
             else
-                equipamentoAchado = null;
-            return equipamentoAchado;
+                eqpAchado = null;
+            return eqpAchado;
         }
+
     }
 
 }
