@@ -577,6 +577,7 @@ namespace ProjetoLocacao
             this.lstLiberaItensContrato.Name = "lstLiberaItensContrato";
             this.lstLiberaItensContrato.Size = new System.Drawing.Size(136, 173);
             this.lstLiberaItensContrato.TabIndex = 3;
+            this.lstLiberaItensContrato.SelectedIndexChanged += new System.EventHandler(this.lstLiberaItensContrato_SelectedIndexChanged);
             // 
             // cmbEquipamentos
             // 
@@ -585,6 +586,7 @@ namespace ProjetoLocacao
             this.cmbEquipamentos.Name = "cmbEquipamentos";
             this.cmbEquipamentos.Size = new System.Drawing.Size(121, 21);
             this.cmbEquipamentos.TabIndex = 4;
+            this.cmbEquipamentos.SelectedIndexChanged += new System.EventHandler(this.cmbEquipamentos_SelectedIndexChanged);
             // 
             // label14
             // 
@@ -604,6 +606,7 @@ namespace ProjetoLocacao
             this.chkAvariado.TabIndex = 6;
             this.chkAvariado.Text = "avariado";
             this.chkAvariado.UseVisualStyleBackColor = true;
+            this.chkAvariado.CheckedChanged += new System.EventHandler(this.chkAvariado_CheckedChanged);
             // 
             // btnLiberaContrato
             // 
